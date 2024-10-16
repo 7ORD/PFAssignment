@@ -1,0 +1,23 @@
+[
+  {
+    "Username": "nurse@example.com",
+    "Password": "b1a5658d4bb398e5d3ed7f72a820f644",
+    "FirstName": "Jane",
+    "LastName": "Doe",
+    "AccountType": 0
+  },
+  {
+    "Username": "doctor@example.com",
+    "Password": "b1a5658d4bb398e5d3ed7f72a820f644",
+    "FirstName": "John",
+    "LastName": "Doe",
+    "AccountType": 1
+  },
+  {
+    "Username": "admin@example.com",
+    "Password": "b1a5658d4bb398e5d3ed7f72a820f644",
+    "FirstName": "Foo",
+    "LastName": "Bar",
+    "AccountType": 2
+  }
+]

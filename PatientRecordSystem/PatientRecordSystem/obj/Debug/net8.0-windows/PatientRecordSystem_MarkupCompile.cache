@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\W10 LSTC 202\Desktop\PF Assignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\
 PatientRecordSystem
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\W10 LSTC 202\Desktop\PF Assignment\PatientRecordSystem\PatientRecordSystem\App.xaml
-21727942632
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\App.xaml
+21826853064
 
-7-2051239544
+71209003685
 198-556154604
-MainWindow.xaml;Views\LoginView.xaml;
+MainWindow.xaml;views\LoginView.xaml;
 
 False
 

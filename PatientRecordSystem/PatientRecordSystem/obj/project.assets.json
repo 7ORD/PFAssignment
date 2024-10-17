@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\W10 LSTC 202\\Desktop\\PF Assignment\\PatientRecordSystem\\PatientRecordSystem\\PatientRecordSystem.csproj",
+      "projectUniqueName": "C:\\Users\\W10 LSTC 202\\Desktop\\PF Assignment\\patientrecordsystem\\PatientRecordSystem\\PatientRecordSystem\\PatientRecordSystem.csproj",
       "projectName": "PatientRecordSystem",
-      "projectPath": "C:\\Users\\W10 LSTC 202\\Desktop\\PF Assignment\\PatientRecordSystem\\PatientRecordSystem\\PatientRecordSystem.csproj",
+      "projectPath": "C:\\Users\\W10 LSTC 202\\Desktop\\PF Assignment\\patientrecordsystem\\PatientRecordSystem\\PatientRecordSystem\\PatientRecordSystem.csproj",
       "packagesPath": "C:\\Users\\W10 LSTC 202\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\W10 LSTC 202\\Desktop\\PF Assignment\\PatientRecordSystem\\PatientRecordSystem\\obj\\",
+      "outputPath": "C:\\Users\\W10 LSTC 202\\Desktop\\PF Assignment\\patientrecordsystem\\PatientRecordSystem\\PatientRecordSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

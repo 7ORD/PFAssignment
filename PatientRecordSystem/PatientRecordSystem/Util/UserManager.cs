@@ -16,36 +16,31 @@ namespace PatientRecordSystem.Util
         {
             Validated,
             InvalidPassword,
-            InvalidUsername,
-            Null
+            InvalidUsername
         }
-
 
         public static ValidationStatus ValidateUser(string username, string password)
         {
-
             string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
             string jsonString = File.ReadAllText(jsonPath);
-
             User[] users = JsonSerializer.Deserialize<User[]>(jsonString);
 
-            for (int i = 0; i < users.Length; i++)
+            foreach (User user in users)
             {
-                if (users[i].Username.ToLower () == username.ToLower ())
+
+                Trace.WriteLine("\n" + user.Username);
+                if (user.Username.ToLower () == username.ToLower ())
                 {
-                    if (users[i].Password == password)
+                    if (user.Password == password)
                     {
                         return ValidationStatus.Validated;
                     } else
                     {
                         return ValidationStatus.InvalidPassword;
                     }
-                } else
-                {
-                    return ValidationStatus.InvalidUsername;
                 }
             }
-            return ValidationStatus.Null;
+            return ValidationStatus.InvalidUsername;
         }
     }
 }

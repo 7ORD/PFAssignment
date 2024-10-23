@@ -17,10 +17,10 @@ namespace PatientRecordSystem.Objects
             Admin
         }
 
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public UserAccountType AccountType { get; set; }
+        public required string Username { get; set; }
+        public required string Password { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public required UserAccountType AccountType { get; set; }
     }
 }

@@ -21,7 +21,7 @@
                     <StackPanel Orientation="Vertical" Margin="20,0,20,0">
                         
                         <!-- Validation Information Label -->
-                        <TextBlock Name="test" Text="Enter your account credentials below to log in" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,10"/>
+                        <TextBlock Name="instruction" Text="Enter your login credentials" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,10"/>
 
                         <!-- Username Field -->
                         <TextBlock  Text="Username" FontSize="14" Margin="0,0,0,4" />
@@ -29,10 +29,10 @@
 
                         <!-- Password field -->
                         <TextBlock Text="Password" FontSize="14" Margin="0,0,0,4" />
-                        <PasswordBox Name="password" FontSize="14" Padding="4" />
+                        <PasswordBox GotFocus="PasswordBoxKeyDown" KeyDown="PasswordBoxKeyDown" Name="password" FontSize="14" Padding="4" />
 
                         <!-- Login Button -->
-                        <Button Name="Login" Click="Login_Click" BorderBrush="Black" BorderThickness="1" Padding="6" Width="460" Margin="0,22,0,0">Login</Button>
+                        <Button IsDefault="true" Name="Login" Click="LoginClick" BorderBrush="Black" BorderThickness="1" Padding="6" Width="460" Margin="0,22,0,0">Login</Button>
 
                     </StackPanel>
             </Grid>

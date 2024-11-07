@@ -7,27 +7,63 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AppointmentsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\DashboardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ForgotPasswordView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\HomeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\LoginView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NewUserModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PasswordResetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PatientsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\AppointmentsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\DashboardView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ForgotPasswordView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\HomeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NewUserModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PasswordResetView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PatientsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

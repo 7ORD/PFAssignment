@@ -31,26 +31,20 @@ namespace PatientRecordSystem.View
             InitializeComponent();
         }
 
-        //Returns a hashed password from string 'password' - Encryption is achieved using the MD5 hashing algorithm.
-        //All characters are then made into lower case, and hyphens (-) removed
-        private string hash (string password)
-        {
-            byte[] passBytes = new UTF8Encoding().GetBytes(password.ToString());
-            byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(passBytes);
-            string encoded = BitConverter.ToString(hash).ToLower ().Replace ("-", "");
-
-            return encoded;
-        }
-
         //Button click logic for the login button - Gets a ValidationStatus dependant on the username and password entered.
         private void Login_Click (object sender, RoutedEventArgs e)
         {
-            UserManager.ValidationStatus status = UserManager.ValidateUser(username.Text.ToString (),  hash(password.Password));
+            UserManager.ValidationStatus status = UserManager.ValidateUser(username.Text.ToString (),  UserManager.Hash(password.Password));
             ValidationInformation(status);
 
-            if (status == UserManager.ValidationStatus.Validated)
+            switch (status)
             {
-                NavigationService.Navigate(new DashboardView());
+                case UserManager.ValidationStatus.Validated:
+                    NavigationService.Navigate(new DashboardView());
+                    break;
+                case UserManager.ValidationStatus.ValidatedReset:
+                    NavigationService.Navigate(new PasswordResetView());
+                    break;
             }
         }
 
@@ -74,7 +68,8 @@ namespace PatientRecordSystem.View
                     password.ToolTip = tt;
                     tt.IsOpen = true;
                 } 
-            } else
+            } 
+            else
             {
                 ToolTip currentToolTip = password.ToolTip as ToolTip;
                 if (currentToolTip != null)

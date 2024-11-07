@@ -6,17 +6,19 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using PatientRecordSystem.Objects;
+using PatientRecordSystem.Model;
 
 namespace PatientRecordSystem.Util
 {
     public static class UserManager
     {
+
+        public static User currentUser { get; private set; }
+
         public enum ValidationStatus
         {
             Validated,
-            InvalidPassword,
-            InvalidUsername
+            InvalidCredentials
         }
 
         public static ValidationStatus ValidateUser(string username, string password)
@@ -29,18 +31,33 @@ namespace PatientRecordSystem.Util
             {
 
                 Trace.WriteLine("\n" + user.Username);
-                if (user.Username.ToLower () == username.ToLower ())
+                if (user.Username.ToLower() == username.ToLower())
                 {
                     if (user.Password == password)
                     {
+                        Login(user);
                         return ValidationStatus.Validated;
                     } else
                     {
-                        return ValidationStatus.InvalidPassword;
+                        Logout();
+                        return ValidationStatus.InvalidCredentials;
                     }
                 }
             }
-            return ValidationStatus.InvalidUsername;
+            return ValidationStatus.InvalidCredentials;
+        }
+
+
+        // Sets the currentUser to a value of user.
+        private static void Login(User user)
+        {
+            currentUser = user;
+        }
+
+        // Resets the currentUser to a null value.
+        public static void Logout ()
+        {
+            currentUser = null;
         }
     }
 }

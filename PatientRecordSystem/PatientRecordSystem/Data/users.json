@@ -1,20 +1,20 @@
 [
   {
-    "Username": "dba6216a76437f8faf84d54bf865bd35",
+    "Username": "nurse@example.com",
     "Password": "b1a5658d4bb398e5d3ed7f72a820f644",
     "FirstName": "Jane",
     "LastName": "Doe",
     "AccountType": 0
   },
   {
-    "Username": "cfc8f94cda77104f8b2b4e609ede7099",
+    "Username": "doctor@example.com",
     "Password": "b1a5658d4bb398e5d3ed7f72a820f644",
     "FirstName": "John",
     "LastName": "Doe",
     "AccountType": 1
   },
   {
-    "Username": "e64c7d89f26bd1972efa854d13d7dd61",
+    "Username": "admin@example.com",
     "Password": "b1a5658d4bb398e5d3ed7f72a820f644",
     "FirstName": "Foo",
     "LastName": "Bar",

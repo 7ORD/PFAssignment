@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace PatientRecordSystem.Objects
+namespace PatientRecordSystem.Model
 {
     [Serializable]
     public class User

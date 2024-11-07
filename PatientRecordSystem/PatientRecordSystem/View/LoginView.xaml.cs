@@ -18,12 +18,12 @@ using System.Windows.Shapes;
 using Microsoft.VisualBasic;
 using PatientRecordSystem.Util;
 
-namespace PatientRecordSystem.Views
+namespace PatientRecordSystem.View
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class LoginView : Page
     {
 
         public LoginView()
@@ -43,18 +43,27 @@ namespace PatientRecordSystem.Views
         }
 
         //Button click logic for the login button - Gets a ValidationStatus dependant on the username and password entered.
-        private void LoginClick (object sender, RoutedEventArgs e)
+        private void Login_Click (object sender, RoutedEventArgs e)
         {
-            UserManager.ValidationStatus status = UserManager.ValidateUser(hash(username.Text.ToString ()),  hash(password.Password));
-
+            UserManager.ValidationStatus status = UserManager.ValidateUser(username.Text.ToString (),  hash(password.Password));
             ValidationInformation(status);
+
+            if (status == UserManager.ValidationStatus.Validated)
+            {
+                NavigationService.Navigate(new DashboardView());
+            }
+        }
+
+        private void ForgotPassword_Click (object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ForgotPasswordView());
         }
 
         private void PasswordBoxKeyDown (object sender, KeyEventArgs e)
         {
 
             ToolTip tt = new ToolTip();
-            tt.Content = "Warning - Caps lock is enabled";
+            tt.Content = "Caps lock is enabled";
             tt.PlacementTarget = sender as UIElement;
             tt.Placement = PlacementMode.Bottom;
 
@@ -76,16 +85,12 @@ namespace PatientRecordSystem.Views
             }
         }
 
-
+        //This method sets the "instruction" TextBlock's Text field to provide the user with some validation feedback.
         private void ValidationInformation(UserManager.ValidationStatus status)
         {
             switch (status)
             {
-                case UserManager.ValidationStatus.InvalidUsername:
-                    instruction.Text = "Invalid username or password";
-                    instruction.Foreground = Brushes.Red;
-                    break;
-                case UserManager.ValidationStatus.InvalidPassword:
+                case UserManager.ValidationStatus.InvalidCredentials:
                     instruction.Text = "Invalid username or password";
                     instruction.Foreground = Brushes.Red;
                     break;

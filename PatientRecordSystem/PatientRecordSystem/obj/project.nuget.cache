@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "rJfTZ/hur4Y=",
+  "dgSpecHash": "ifnEOMwGUZyr65GLL7ILlxfvM1TCha0UFlqTqE7YH7A/3QDs7i0M4OMnjvhAVIDNf0jTpLsK39xGE+fxxQ5kXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\W10 LSTC 202\\Desktop\\PF Assignment\\patientrecordsystem\\PatientRecordSystem\\PatientRecordSystem\\PatientRecordSystem.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\jhoe1\\Desktop\\Patient Record System\\PFAssignment\\PatientRecordSystem\\PatientRecordSystem\\PatientRecordSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jhoe1\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.1\\microsoft.extensions.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\jhoe1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -113,3 +113,5 @@ C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\Pa
 C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\UserManagementView.baml
 C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NewUserModal.g.cs
 C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NewUserModal.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NotificationWindow.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NotificationWindow.baml

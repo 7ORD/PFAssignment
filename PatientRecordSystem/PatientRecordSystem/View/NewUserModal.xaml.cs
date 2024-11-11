@@ -23,7 +23,7 @@ namespace PatientRecordSystem.View
     /// </summary>
     public partial class NewUserModal : Window
     {
-        public static User newUser;
+        public User newUser;
 
         //Enum used for form input validation
         private enum NewUserValidation
@@ -47,7 +47,7 @@ namespace PatientRecordSystem.View
         //Event for create button click
         private void CreateAccount_Clicked (object sender, RoutedEventArgs e)
         {
-            UserManager.AddUser(newUser);
+            Instances.userManager.AddUser(newUser);
             this.Close();
         }
 
@@ -61,7 +61,7 @@ namespace PatientRecordSystem.View
             user.FirstName = FirstName.Text;
             user.LastName = LastName.Text;
             user.AccountType = (User.UserAccountType)AccountType.SelectedIndex;
-            user.Password = UserManager.Hash("Example123");
+            user.Password = Instances.userManager.Hash("Example123");
             user.ResetFlag = true;
 
             switch (ValidateUser(user.Username, user.FirstName, user.LastName, user.AccountType))
@@ -105,7 +105,7 @@ namespace PatientRecordSystem.View
 
             if (emailRegex.IsMatch (username))  //Checks username against the emailRegex
             {
-                if (!UserManager.Users().Any (u => u.Username == username)) //Checks if the email address does not already exists in the users.json
+                if (!Instances.userManager.Users().Any (u => u.Username == username)) //Checks if the email address does not already exists in the users.json
                 {
                     if (nameRegex.IsMatch (firstName))  //Checks firstName against the nameRegex
                     {

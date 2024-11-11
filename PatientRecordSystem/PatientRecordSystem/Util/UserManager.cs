@@ -11,32 +11,38 @@ using System.Security.Cryptography;
 
 namespace PatientRecordSystem.Util
 {
-    public static class UserManager
+    public class UserManager
     {
 
-        public static User currentUser { get; private set; }
+        public User currentUser { get; private set; }
 
-        public enum ValidationStatus
-        {
-            Validated,
-            ValidatedReset,
-            InvalidCredentials
-        }
 
-        private static string UserJson()
+
+        private string UserJson()
         {
             string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
             return File.ReadAllText(jsonPath);
         }
 
-        public static List<User> Users ()
+        public List<User> Users ()
         {
-            string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
-            string jsonString = File.ReadAllText(jsonPath);
-            return JsonSerializer.Deserialize<List<User>>(jsonString);
+            return JsonSerializer.Deserialize<List<User>>(UserJson());
         }
 
-        public static void AddUser(User user)
+        public void ResetPassword (string username)
+        {
+            string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
+            List<User> users = Users();
+
+            users.Find(u => u.Username == username).ResetFlag = true;
+            users.Find(u => u.Username == username).Password = Hash("Example123");
+
+            string jsonString = JsonSerializer.Serialize(users);
+            File.WriteAllText(jsonPath, jsonString);
+
+        }
+
+        public void AddUser(User user)
         {
 
             List<User> users = Users();
@@ -47,7 +53,7 @@ namespace PatientRecordSystem.Util
             File.WriteAllText(jsonPath, jsonString);
         }
 
-        public static ValidationStatus ValidateUser(string username, string password)
+        public Instances.ValidationStatus ValidateUser(string username, string password)
         {
 
             foreach (User user in Users ())
@@ -61,23 +67,23 @@ namespace PatientRecordSystem.Util
 
                         if (user.ResetFlag)
                         {
-                            return ValidationStatus.ValidatedReset;
+                            return Instances.ValidationStatus.ValidatedReset;
                         }
 
-                        return ValidationStatus.Validated;
+                        return Instances.ValidationStatus.Validated;
                     } else
                     {
                         Logout();
-                        return ValidationStatus.InvalidCredentials;
+                        return Instances.ValidationStatus.InvalidCredentials;
                     }
                 }
             }
-            return ValidationStatus.InvalidCredentials;
+            return Instances.ValidationStatus.InvalidCredentials;
         }
 
         //Returns a hashed password from string 'password' - Encryption is achieved using the MD5 hashing algorithm.
         //All characters are then made into lower case, and hyphens (-) removed
-        public static string Hash(string password)
+        public string Hash(string password)
         {
             byte[] passBytes = new UTF8Encoding().GetBytes(password.ToString());
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(passBytes);
@@ -86,22 +92,12 @@ namespace PatientRecordSystem.Util
             return encoded;
         }
 
-        public static void UpdatePassword (string username, string password)
+        public void UpdatePassword (string username, string password)
         {
-
             string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
-            string jsonString = File.ReadAllText(jsonPath);
-            User[] users = JsonSerializer.Deserialize<User[]>(jsonString);
+            List<User> users = Users();
 
-            for (int i = 0; i < users.Length; i++)
-            {
-                if (users[i].Username == username)
-                {
-                    users[i].Password = password;
-                    users[i].ResetFlag = false;
-                    break;
-                }
-            }
+            users.Find(u => u.Username == username).Password = Hash(password);
 
             string newJsonString = JsonSerializer.Serialize(users);
             File.WriteAllText (jsonPath, newJsonString);
@@ -109,13 +105,13 @@ namespace PatientRecordSystem.Util
 
 
         // Sets the currentUser to a value of user.
-        private static void Login(User user)
+        private void Login(User user)
         {
             currentUser = user;
         }
 
         // Resets the currentUser to a null value.
-        public static void Logout ()
+        public void Logout ()
         {
             currentUser = null;
         }

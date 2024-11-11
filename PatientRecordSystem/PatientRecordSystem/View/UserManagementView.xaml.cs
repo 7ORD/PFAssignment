@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PatientRecordSystem.Model;
+using PatientRecordSystem.Util;
 
 namespace PatientRecordSystem.View
 {
@@ -25,6 +27,7 @@ namespace PatientRecordSystem.View
     public partial class UserManagementView : Page
     {
         private User[] users;
+        private UserManager userManager;
 
         public UserManagementView()
         {
@@ -32,7 +35,7 @@ namespace PatientRecordSystem.View
             string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
             string jsonString = File.ReadAllText(jsonPath);
             users = JsonSerializer.Deserialize<User[]>(jsonString);
-
+            
 
             InitializeComponent();
 
@@ -46,14 +49,18 @@ namespace PatientRecordSystem.View
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
+            User user = UserTable.SelectedItem as User;
 
+            Instances.userManager.ResetPassword(user.Username);
+
+            NotificationWindow notification = new NotificationWindow("Password Reset", "The user's password has been reset back to the\ndefault value.");
+            notification.ShowDialog();
         }
 
         private void NewUser_Click(object sender, RoutedEventArgs e)
         {
             NewUserModal newUserModal = new NewUserModal();
             newUserModal.ShowDialog();
-        
         }
     }
 }

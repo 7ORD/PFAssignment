@@ -34,15 +34,15 @@ namespace PatientRecordSystem.View
         //Button click logic for the login button - Gets a ValidationStatus dependant on the username and password entered.
         private void Login_Click (object sender, RoutedEventArgs e)
         {
-            UserManager.ValidationStatus status = UserManager.ValidateUser(username.Text.ToString (),  UserManager.Hash(password.Password));
-            ValidationInformation(status);
+            Instances.ValidationStatus status = Instances.userManager.ValidateUser(username.Text.ToString (),  Instances.userManager.Hash(password.Password));
+            ValidationInformation(status, password.Password);
 
             switch (status)
             {
-                case UserManager.ValidationStatus.Validated:
+                case Instances.ValidationStatus.Validated:
                     NavigationService.Navigate(new DashboardView());
                     break;
-                case UserManager.ValidationStatus.ValidatedReset:
+                case Instances.ValidationStatus.ValidatedReset:
                     NavigationService.Navigate(new PasswordResetView());
                     break;
             }
@@ -81,15 +81,16 @@ namespace PatientRecordSystem.View
         }
 
         //This method sets the "instruction" TextBlock's Text field to provide the user with some validation feedback.
-        private void ValidationInformation(UserManager.ValidationStatus status)
+        private void ValidationInformation(Instances.ValidationStatus status, string password)
         {
             switch (status)
             {
-                case UserManager.ValidationStatus.InvalidCredentials:
+                case Instances.ValidationStatus.InvalidCredentials:
                     instruction.Text = "Invalid username or password";
+                    Trace.WriteLine(Instances.userManager.Hash (password));
                     instruction.Foreground = Brushes.Red;
                     break;
-                case UserManager.ValidationStatus.Validated:
+                case Instances.ValidationStatus.Validated:
                     instruction.Text = "Validation success";
                     instruction.Foreground = Brushes.Green;
                     break;

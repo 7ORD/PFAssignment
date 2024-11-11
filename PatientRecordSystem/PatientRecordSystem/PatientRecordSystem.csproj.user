@@ -25,6 +25,9 @@
     <Compile Update="View\NewUserModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\NotificationWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\PasswordResetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\NewUserModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NotificationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\PasswordResetView.xaml">

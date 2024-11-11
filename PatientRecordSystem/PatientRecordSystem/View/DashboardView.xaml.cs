@@ -39,12 +39,12 @@ namespace PatientRecordSystem.View
         public DashboardView()
         {
             InitializeComponent();
-            UserLabel.Text = "Logged in as " + UserManager.currentUser.FirstName + " " + UserManager.currentUser.LastName;
+            UserLabel.Text = "Logged in as " + Instances.userManager.currentUser.FirstName + " " + Instances.userManager.currentUser.LastName;
 
             selectedColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("LightGray"));
             defaultColor = new SolidColorBrush((Color)(Color)ColorConverter.ConvertFromString("#FFDDDDDD"));
 
-            if (UserManager.currentUser.AccountType != Model.User.UserAccountType.Admin)
+            if (Instances.userManager.currentUser.AccountType != Model.User.UserAccountType.Admin)
             {
                 UserManagementButton.Visibility = Visibility.Hidden;
             }
@@ -87,7 +87,7 @@ namespace PatientRecordSystem.View
 
         public void Logout_Click (object sender, RoutedEventArgs e)
         {
-            UserManager.Logout();
+            Instances.userManager.Logout();
 
             NavigationService.Navigate(new LoginView());
         }

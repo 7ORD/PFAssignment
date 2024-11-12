@@ -18,12 +18,12 @@ using System.Windows.Shapes;
 using Microsoft.VisualBasic;
 using PatientRecordSystem.Util;
 
-namespace PatientRecordSystem.Views
+namespace PatientRecordSystem.View
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class LoginView : Page
     {
 
         public LoginView()
@@ -31,30 +31,35 @@ namespace PatientRecordSystem.Views
             InitializeComponent();
         }
 
-        //Returns a hashed password from string 'password' - Encryption is achieved using the MD5 hashing algorithm.
-        //All characters are then made into lower case, and hyphens (-) removed
-        private string hash (string password)
+        /// <summary>
+        /// Button click logic for the login button - Gets a ValidationStatus dependant on the username and password entered.
+        /// </summary>
+        private void Login_Click (object sender, RoutedEventArgs e)
         {
-            byte[] passBytes = new UTF8Encoding().GetBytes(password.ToString());
-            byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(passBytes);
-            string encoded = BitConverter.ToString(hash).ToLower ().Replace ("-", "");
+            Instances.ValidationStatus status = Instances.userManager.ValidateUser(username.Text.ToString (),  Instances.userManager.Hash(password.Password));
+            ValidationInformation(status);
 
-            return encoded;
+            switch (status)
+            {
+                case Instances.ValidationStatus.Validated:
+                    NavigationService.Navigate(new DashboardView());
+                    break;
+                case Instances.ValidationStatus.ValidatedReset:
+                    NavigationService.Navigate(new PasswordResetView());
+                    break;
+            }
         }
 
-        //Button click logic for the login button - Gets a ValidationStatus dependant on the username and password entered.
-        private void LoginClick (object sender, RoutedEventArgs e)
+        private void ForgotPassword_Click (object sender, RoutedEventArgs e)
         {
-            UserManager.ValidationStatus status = UserManager.ValidateUser(hash(username.Text.ToString ()),  hash(password.Password));
-
-            ValidationInformation(status);
+            NavigationService.Navigate(new ForgotPasswordView());
         }
 
         private void PasswordBoxKeyDown (object sender, KeyEventArgs e)
         {
 
             ToolTip tt = new ToolTip();
-            tt.Content = "Warning - Caps lock is enabled";
+            tt.Content = "Caps lock is enabled";
             tt.PlacementTarget = sender as UIElement;
             tt.Placement = PlacementMode.Bottom;
 
@@ -65,7 +70,8 @@ namespace PatientRecordSystem.Views
                     password.ToolTip = tt;
                     tt.IsOpen = true;
                 } 
-            } else
+            } 
+            else
             {
                 ToolTip currentToolTip = password.ToolTip as ToolTip;
                 if (currentToolTip != null)
@@ -76,20 +82,19 @@ namespace PatientRecordSystem.Views
             }
         }
 
-
-        private void ValidationInformation(UserManager.ValidationStatus status)
+        /// <summary>
+        /// Sets the "instruction" TextBlock's Text field to provide the user with some validation feedback.
+        /// </summary>
+        /// <param name="status">ValidationStatus input</param>
+        private void ValidationInformation(Instances.ValidationStatus status)
         {
             switch (status)
             {
-                case UserManager.ValidationStatus.InvalidUsername:
+                case Instances.ValidationStatus.InvalidCredentials:
                     instruction.Text = "Invalid username or password";
                     instruction.Foreground = Brushes.Red;
                     break;
-                case UserManager.ValidationStatus.InvalidPassword:
-                    instruction.Text = "Invalid username or password";
-                    instruction.Foreground = Brushes.Red;
-                    break;
-                case UserManager.ValidationStatus.Validated:
+                case Instances.ValidationStatus.Validated:
                     instruction.Text = "Validation success";
                     instruction.Foreground = Brushes.Green;
                     break;

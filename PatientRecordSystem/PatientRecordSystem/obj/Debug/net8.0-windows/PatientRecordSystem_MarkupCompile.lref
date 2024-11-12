@@ -1,5 +1,13 @@
 ﻿
-
-FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\MainWindow.xaml;;
-FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\views\LoginView.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\App.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\AppointmentsView.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\DashboardView.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\ForgotPasswordView.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\HomeView.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\MainWindow.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\NewUserModal.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\NotificationWindow.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\PasswordResetView.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\PatientsView.xaml;;
+FC:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\View\UserManagementView.xaml;;
 

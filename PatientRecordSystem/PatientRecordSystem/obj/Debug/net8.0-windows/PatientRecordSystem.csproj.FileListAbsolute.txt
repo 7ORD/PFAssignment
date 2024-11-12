@@ -50,13 +50,9 @@ C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSys
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.runtimeconfig.json
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.dll
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.pdb
-C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\views\LoginView.g.cs
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem_MarkupCompile.cache
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem_MarkupCompile.lref
-C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\MainWindow.baml
-C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\views\LoginView.baml
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.g.resources
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.AssemblyInfoInputs.cache
@@ -68,3 +64,73 @@ C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSys
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.pdb
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.genruntimeconfig.cache
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\ref\PatientRecordSystem.dll
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem_MarkupCompile.cache
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem_MarkupCompile.lref
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.dll
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\refint\PatientRecordSystem.dll
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.pdb
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.exe
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\Data\users.json
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.deps.json
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.runtimeconfig.json
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.dll
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.pdb
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.g.resources
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.AssemblyInfoInputs.cache
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.AssemblyInfo.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.csproj.CoreCompileInputs.cache
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.sourcelink.json
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.genruntimeconfig.cache
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\ref\PatientRecordSystem.dll
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.csproj.AssemblyReference.cache
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\PatientRecordSystem.csproj.CopyComplete
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\LoginView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\MainWindow.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\LoginView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\MainWindow.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\ForgotPasswordView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\ForgotPasswordView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DashboardView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DashboardView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PasswordResetView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PasswordResetView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\App.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\HomeView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\HomeView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentsView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientsView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\UserManagementView.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentsView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientsView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\UserManagementView.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NewUserModal.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NewUserModal.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NotificationWindow.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NotificationWindow.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\LoginView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentsView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DashboardView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\ForgotPasswordView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\HomeView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\LoginView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\MainWindow.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NewUserModal.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NotificationWindow.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PasswordResetView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientsView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\UserManagementView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\App.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentsView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DashboardView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\ForgotPasswordView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\HomeView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\MainWindow.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NewUserModal.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\NotificationWindow.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PasswordResetView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientsView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\UserManagementView.baml

@@ -1,19 +1,21 @@
-﻿<Window x:Class="PatientRecordSystem.MainWindow"
+﻿<Window x:Class="PatientRecordSystem.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PatientRecordSystem"
+        xmlns:view="clr-namespace:PatientRecordSystem.View"
         mc:Ignorable="d"
         Title="Patient Record System"
-        MinWidth="800"
-        MinHeight="600"
+        MinWidth="1280"
+        MinHeight="720"
+        Background="LightGray"
         Width="1280"
         Height="720"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         >
     <Grid>
-        <Frame Source="views/LoginView.xaml" />
+        <Frame Source="LoginView.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

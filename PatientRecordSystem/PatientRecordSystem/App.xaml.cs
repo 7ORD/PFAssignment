@@ -9,6 +9,6 @@ namespace PatientRecordSystem
     /// </summary>
     public partial class App : Application
     {
-    }
 
+    }
 }

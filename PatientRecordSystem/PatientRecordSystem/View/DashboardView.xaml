@@ -1,0 +1,43 @@
+﻿<Page x:Class="PatientRecordSystem.View.DashboardView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PatientRecordSystem.View"
+      mc:Ignorable="d" 
+      Title="Dashboard View">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="95*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Background="White">
+            <DockPanel>
+                <TextBlock Text="Patient Record System" Padding="16" VerticalAlignment="Center" FontSize="18"/>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="16 0">
+                    <TextBlock Name="UserLabel" Text="Logged in as: USER" VerticalAlignment="Center" Padding="16 0"/>
+                    <Button Height="128" Padding="16 0" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Account Management"/>
+                    <Button Click="Logout_Click" HorizontalAlignment="Right" Height="128" Padding="16 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Log out"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Background="White">
+            <Button Click="Dashboard_Click" Name="DashboardButton" Style="{StaticResource NavBar}" Content="Dashboard" />
+            <Button Click="Patients_Click" Name="PatientsButton" Style="{StaticResource NavBar}" Content="Patients" />
+            <Button Click="Appointments_Click" Name="AppointmentsButton" Style="{StaticResource NavBar}" Content="Appointments" />
+            <Button Click="UserManagement_Click" Name="UserManagementButton" Style="{StaticResource NavBar}" Content="User Management" />
+        </StackPanel>
+
+
+        <Frame Name="ContentFrame" Grid.Column="1" Grid.Row="1" Source="HomeView.xaml" />
+    </Grid>
+</Page>

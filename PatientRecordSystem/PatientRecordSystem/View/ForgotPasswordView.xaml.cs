@@ -41,8 +41,13 @@ namespace PatientRecordSystem.View
                 Instances.userManager.UpdateData(users);
 
 
-                NotificationWindow notification = new NotificationWindow("Forgot Password", "If the user exists, a password reset request\nwill be send to the admin.");
+                NotificationWindow notification = new NotificationWindow("Forgot Password", "If the user exists, a password reset request\nwill be send to the admin.", new LoginView ());
                 notification.ShowDialog();
+
+                notification.Closed += (s, e) =>
+                {
+                    NavigationService.Navigate(new LoginView());
+                };
             }
         }
 

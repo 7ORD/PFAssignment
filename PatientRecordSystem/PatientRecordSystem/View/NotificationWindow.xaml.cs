@@ -33,10 +33,9 @@ namespace PatientRecordSystem.View
             TargetPage = targetPage;
         }
 
-        private void Close_Click (object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(TargetPage);
-            this.Close();
+            Close();
         }
     }
 }

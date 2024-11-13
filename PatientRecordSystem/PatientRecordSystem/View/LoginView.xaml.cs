@@ -36,7 +36,7 @@ namespace PatientRecordSystem.View
         /// </summary>
         private void Login_Click (object sender, RoutedEventArgs e)
         {
-            Instances.ValidationStatus status = Instances.userManager.ValidateUser(username.Text.ToString (),  Instances.userManager.Hash(password.Password));
+            Instances.ValidationStatus status = Instances.userManager.ValidateUser(username.Text.ToString (),  UserManager.Hash(password.Password));
             ValidationInformation(status);
 
             switch (status)

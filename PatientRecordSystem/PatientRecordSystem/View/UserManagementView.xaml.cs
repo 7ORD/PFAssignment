@@ -26,41 +26,42 @@ namespace PatientRecordSystem.View
     /// </summary>
     public partial class UserManagementView : Page
     {
-        private User[] users;
-        private UserManager userManager;
 
         public UserManagementView()
         {
-
-            string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
-            string jsonString = File.ReadAllText(jsonPath);
-            users = JsonSerializer.Deserialize<User[]>(jsonString);
-            
-
             InitializeComponent();
 
-            UserTable.DataContext = users;
+            UserTable.DataContext = Instances.userManager.Users();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
             User user = UserTable.SelectedItem as User;
 
             Instances.userManager.ResetPassword(user.Username);
 
-            NotificationWindow notification = new NotificationWindow("Password Reset", "The user's password has been reset back to the\ndefault value.", new LoginView());
-            notification.ShowDialog();
+            NotificationWindow notificationWindow = new NotificationWindow("Reset Password", "The user's password has been reset to\nthe default value (Example123)");
+            notificationWindow.ShowDialog();
+
+            if (notificationWindow.DialogResult == true)
+            {
+                NavigationService.Refresh();
+            }
         }
 
         private void NewUser_Click(object sender, RoutedEventArgs e)
         {
             NewUserModal newUserModal = new NewUserModal();
             newUserModal.ShowDialog();
+
+            if (newUserModal.DialogResult == true)
+            {
+                NavigationService.Navigate(new UserManagementView());
+            }
         }
     }
 }

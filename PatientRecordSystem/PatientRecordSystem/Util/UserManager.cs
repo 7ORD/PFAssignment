@@ -33,6 +33,7 @@ namespace PatientRecordSystem.Util
             List<User> users = Users();
 
             users.Find(u => u.Username == username).ResetFlag = true;
+            users.Find(u => u.Username == username).ResetRequestFlag = false;
             users.Find(u => u.Username == username).Password = Hash("Example123");
 
             UpdateData(users);
@@ -50,10 +51,8 @@ namespace PatientRecordSystem.Util
 
         public Instances.ValidationStatus ValidateUser(string username, string password)
         {
-
             foreach (User user in Users ())
             {
-
                 if (user.Username.ToLower() == username.ToLower())
                 {
                     if (user.Password == password)
@@ -64,7 +63,6 @@ namespace PatientRecordSystem.Util
                         {
                             return Instances.ValidationStatus.ValidatedReset;
                         }
-
                         return Instances.ValidationStatus.Validated;
                     } else
                     {
@@ -83,7 +81,7 @@ namespace PatientRecordSystem.Util
         /// <returns>
         /// Returns a hashed password from string 'password' All characters are then made into lower case, and hyphens (-) removed
         /// </returns>
-        public string Hash(string password)
+        public static string Hash(string password)
         {
             byte[] passBytes = new UTF8Encoding().GetBytes(password.ToString());
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(passBytes);
@@ -97,6 +95,7 @@ namespace PatientRecordSystem.Util
             List<User> users = Users();
 
             users.Find(u => u.Username == username).Password = Hash(password);
+            users.Find(u => u.Username == username).ResetFlag = false;
 
             UpdateData(users);
         }
@@ -115,7 +114,7 @@ namespace PatientRecordSystem.Util
         /// </summary>
         public void Logout ()
         {
-            currentUser = null;
+            currentUser = new User();
         }
     }
 }

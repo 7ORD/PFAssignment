@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatientRecordSystem.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,21 +21,16 @@ namespace PatientRecordSystem.View
     /// </summary>
     public partial class NotificationWindow : Window
     {
-
-        Page TargetPage;
-
-        public NotificationWindow(string header, string message, Page targetPage)
+        public NotificationWindow(string header, string message)
         {
-
             InitializeComponent();
 
             HeaderText.Text = header;
             ContentText.Text = message;
-            TargetPage = targetPage;
         }
-
         private void Close_Click(object sender, RoutedEventArgs e)
         {
+            DialogResult = true;
             Close();
         }
     }

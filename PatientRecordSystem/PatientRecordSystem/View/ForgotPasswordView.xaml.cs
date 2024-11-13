@@ -39,16 +39,17 @@ namespace PatientRecordSystem.View
             {
                 user.ResetRequestFlag = true;
                 Instances.userManager.UpdateData(users);
-
-
-                NotificationWindow notification = new NotificationWindow("Forgot Password", "If the user exists, a password reset request\nwill be send to the admin.", new LoginView ());
-                notification.ShowDialog();
-
-                notification.Closed += (s, e) =>
-                {
-                    NavigationService.Navigate(new LoginView());
-                };
             }
+
+            NotificationWindow notificationWindow = new NotificationWindow("Forgot Password", "If the entered user exists, a password\nreset request will be sent to the system admin.");
+
+            notificationWindow.ShowDialog();
+
+            if (notificationWindow.DialogResult == true)
+            {
+                NavigationService.GoBack();
+            }
+            
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

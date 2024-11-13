@@ -48,6 +48,7 @@ namespace PatientRecordSystem.View
         private void CreateAccount_Clicked (object sender, RoutedEventArgs e)
         {
             Instances.userManager.AddUser(newUser);
+            this.DialogResult = true;
             this.Close();
         }
 
@@ -61,7 +62,7 @@ namespace PatientRecordSystem.View
             user.FirstName = FirstName.Text;
             user.LastName = LastName.Text;
             user.AccountType = (User.UserAccountType)AccountType.SelectedIndex;
-            user.Password = Instances.userManager.Hash("Example123");
+            user.Password = UserManager.Hash("Example123");
             user.ResetFlag = true;
 
             switch (ValidateUser(user.Username, user.FirstName, user.LastName, user.AccountType))

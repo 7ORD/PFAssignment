@@ -25,17 +25,6 @@ namespace PatientRecordSystem.View
     {
         public User newUser;
 
-        //Enum used for form input validation
-        private enum NewUserValidation
-        {
-            Valid,
-            InvalidEmail,
-            InvalidFirstName,
-            InvalidLastName,
-            InvalidAccountType,
-            EmailExists
-        }
-
         public NewUserModal()
         {
             InitializeComponent();
@@ -44,20 +33,26 @@ namespace PatientRecordSystem.View
         }
 
 
-        //Event for create button click
+        /// <summary>
+        /// Event for create button click - Creates the new user in the database
+        /// </summary>
         private void CreateAccount_Clicked (object sender, RoutedEventArgs e)
         {
+            // Creates a new user
             Instances.userManager.AddUser(newUser);
             this.DialogResult = true;
             this.Close();
         }
 
-        //Event for validation - Is used upon TextBox value change and ComboBox value change
+        /// <summary>
+        /// Event for validation - Is used upon TextBox value change and ComboBox value change
+        /// Validates the entered credentials, and assigns the values to newUser if they are valid.
+        /// </summary>
         private void Validate (object sender, RoutedEventArgs e)
         {
-
             User user = new User();
 
+            // Populates the user's details to be validated
             user.Username = EmailAddress.Text;
             user.FirstName = FirstName.Text;
             user.LastName = LastName.Text;
@@ -65,76 +60,23 @@ namespace PatientRecordSystem.View
             user.Password = UserManager.Hash("Example123");
             user.ResetFlag = true;
 
-            switch (ValidateUser(user.Username, user.FirstName, user.LastName, user.AccountType))
+            // If the user is valid, enable the Create User button, else keep it disabled
+            if (Instances.userManager.IsUserValid (user))
             {
-                case NewUserValidation.Valid:
-                    newUser = user;
-                    CreateButton.IsEnabled = true;
-                    break;
-                case NewUserValidation.InvalidEmail:
-                    CreateButton.IsEnabled = false;
-                    break;
-                case NewUserValidation.InvalidFirstName:
-                    CreateButton.IsEnabled = false;
-                    break;
-                case NewUserValidation.InvalidLastName:
-                    CreateButton.IsEnabled = false;
-                    break;
-                case NewUserValidation.InvalidAccountType:
-                    CreateButton.IsEnabled = false;
-                    break;
-                case NewUserValidation.EmailExists:
-                    CreateButton.IsEnabled = false;
-                    break;
+                CreateButton.IsEnabled = true;
+                newUser = user;
+            } else
+            {
+                CreateButton.IsEnabled = false;
             }
         }
 
-        //Event for close button click
+        /// <summary>
+        /// Event for close button click - Event closes modal window
+        /// </summary>
         private void Close_Clicked(object sender, RoutedEventArgs e)
         {
-            //Closes modal window
-            this.Close();
-        }
-
-        //Returns a NewUserValidation enum value - takes in the form inputs and validates them.
-        private NewUserValidation ValidateUser (string username, string firstName, string lastName, User.UserAccountType accountType)
-        {
-
-            //Regular expressions for email and name validation - Checks is the email address is a valid email address, and checks that the names only contains alphabetic characters
-            Regex emailRegex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-            Regex nameRegex = new Regex(@"^[a-zA-Z]+$");
-
-            if (emailRegex.IsMatch (username))  //Checks username against the emailRegex
-            {
-                if (!Instances.userManager.Users().Any (u => u.Username == username)) //Checks if the email address does not already exists in the users.json
-                {
-                    if (nameRegex.IsMatch (firstName))  //Checks firstName against the nameRegex
-                    {
-                        if (nameRegex.IsMatch(lastName)) //Checks lastName against the nameRegex
-                        {
-                            if (((int)accountType) != -1)   //Checks accountType has a value assigned
-                            {
-                                return NewUserValidation.Valid;
-                            } else
-                            {
-                                return NewUserValidation.InvalidAccountType;
-                            }
-                        } else
-                        {
-                            return NewUserValidation.InvalidLastName;
-                        }
-                    } else
-                    {
-                        return NewUserValidation.InvalidFirstName;
-                    }
-                } else
-                {
-                    return NewUserValidation.EmailExists;
-                }
-            } else
-            {
-                return NewUserValidation.InvalidEmail;
-            } 
+            Close();
         }
     }
 }

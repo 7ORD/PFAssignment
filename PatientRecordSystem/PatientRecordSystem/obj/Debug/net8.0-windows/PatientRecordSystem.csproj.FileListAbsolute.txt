@@ -134,3 +134,6 @@ C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSys
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PasswordResetView.baml
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientsView.baml
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\UserManagementView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\EditUserModal.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\EditUserModal.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs

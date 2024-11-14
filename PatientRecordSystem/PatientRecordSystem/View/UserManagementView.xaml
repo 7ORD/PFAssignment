@@ -4,9 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PatientRecordSystem.View"
+      xmlns:util="clr-namespace:PatientRecordSystem.Util"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UserManagementView">
+
+    <Page.Resources>
+        <util:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
+    </Page.Resources>
 
     <Grid Margin="32">
         <Grid.RowDefinitions>
@@ -16,13 +21,15 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" FontSize="22" Text="User Management" />
-        <Button Click="NewUser_Click" Grid.Row="0" Grid.Column="2" Content="Create new user" Margin="0,0,0,6"/>
+        <Button Name="ShowDisabledButton" Click="ShowDisabled_Click" Grid.Row="0" Grid.Column="1" Content="View Disabled Accounts" Margin="0,0,4,6"/>
+        <Button Click="NewUser_Click" Grid.Row="0" Grid.Column="2" Content="Create new user" Margin="4,0,0,6"/>
 
-        <DataGrid Name="UserTable" Grid.ColumnSpan="2" Grid.Row="1" RowHeight="32" ColumnHeaderHeight="32" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="0,19,0,0" Grid.RowSpan="3">
+        <DataGrid Name="UserTable" Grid.ColumnSpan="3" Grid.Row="1" RowHeight="32" ColumnHeaderHeight="32" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="0,19,0,0" Grid.RowSpan="3">
             <DataGrid.Columns >
                 <DataGridTextColumn Width="5*"  Header="First Name" Binding="{ Binding FirstName }"/>
                 <DataGridTextColumn Width="5*" Header="Last Name" Binding="{ Binding LastName }"/>
@@ -37,8 +44,11 @@
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="7*" />
                                 </Grid.ColumnDefinitions>
-                                <Button Click="Edit_Click" Grid.Column="0" Content="Edit" BorderThickness="0 0 1 0"/>
-                                <Button Click="Reset_Click" Grid.Column="1" Content="Reset Password" BorderThickness="0"/>
+                                <Button Click="Enable_Click" Grid.Column="0"  Content="Enable" BorderThickness="0 0 1 0"/>
+                                <Button Click="Delete_Click" Grid.Column="1"  Content="Delete User" BorderThickness="0"/>
+                                <Button Click="Edit_Click" Grid.Column="0" Content="Edit" BorderThickness="0 0 1 0" Visibility="{Binding Disabled, Converter={StaticResource BoolVisibilityConverter}}"/>
+                                <Button Click="Reset_Click" Grid.Column="1" Content="Reset Password" BorderThickness="0" Visibility="{Binding Disabled, Converter={StaticResource BoolVisibilityConverter}}"/>
+
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

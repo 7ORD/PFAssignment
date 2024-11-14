@@ -98,6 +98,10 @@ namespace PatientRecordSystem.View
                     instruction.Text = "Validation success";
                     instruction.Foreground = Brushes.Green;
                     break;
+                case Instances.ValidationStatus.AccountDisabled:
+                    instruction.Text = "Account is disabled - Contact your admin";
+                    instruction.Foreground = Brushes.Red;
+                    break;
             }
         }
     }

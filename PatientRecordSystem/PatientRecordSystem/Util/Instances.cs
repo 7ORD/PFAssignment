@@ -14,7 +14,14 @@ namespace PatientRecordSystem.Util
         {
             Validated,
             ValidatedReset,
-            InvalidCredentials
+            InvalidCredentials,
+            AccountDisabled
+        }
+
+        public enum NewUserValidation
+        {
+            Valid,
+            Invalid
         }
 
         public static NavigationService navService;

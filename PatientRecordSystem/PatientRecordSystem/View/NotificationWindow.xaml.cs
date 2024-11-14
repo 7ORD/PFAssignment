@@ -21,12 +21,18 @@ namespace PatientRecordSystem.View
     /// </summary>
     public partial class NotificationWindow : Window
     {
+
+        public string Header;
+        public string Message;
         public NotificationWindow(string header, string message)
         {
             InitializeComponent();
 
-            HeaderText.Text = header;
-            ContentText.Text = message;
+            Header = header;
+            Message = message;
+
+            HeaderText.Text = Header;
+            ContentText.Text = Message;
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {

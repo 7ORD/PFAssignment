@@ -36,15 +36,15 @@ namespace PatientRecordSystem.View
         /// </summary>
         private void Login_Click (object sender, RoutedEventArgs e)
         {
-            Instances.ValidationStatus status = Instances.userManager.ValidateUser(username.Text.ToString (),  UserManager.Hash(password.Password));
+            Globals.ValidationStatus status = UserManager.GetInstance().ValidateUser(username.Text.ToString (),  UserManager.Hash(password.Password));
             ValidationInformation(status);
 
             switch (status)
             {
-                case Instances.ValidationStatus.Validated:
+                case Globals.ValidationStatus.Validated:
                     NavigationService.Navigate(new DashboardView());
                     break;
-                case Instances.ValidationStatus.ValidatedReset:
+                case Globals.ValidationStatus.ValidatedReset:
                     NavigationService.Navigate(new PasswordResetView());
                     break;
             }
@@ -86,17 +86,21 @@ namespace PatientRecordSystem.View
         /// Sets the "instruction" TextBlock's Text field to provide the user with some validation feedback.
         /// </summary>
         /// <param name="status">ValidationStatus input</param>
-        private void ValidationInformation(Instances.ValidationStatus status)
+        private void ValidationInformation(Globals.ValidationStatus status)
         {
             switch (status)
             {
-                case Instances.ValidationStatus.InvalidCredentials:
+                case Globals.ValidationStatus.InvalidCredentials:
                     instruction.Text = "Invalid username or password";
                     instruction.Foreground = Brushes.Red;
                     break;
-                case Instances.ValidationStatus.Validated:
+                case Globals.ValidationStatus.Validated:
                     instruction.Text = "Validation success";
                     instruction.Foreground = Brushes.Green;
+                    break;
+                case Globals.ValidationStatus.AccountDisabled:
+                    instruction.Text = "Account is disabled - Contact your admin";
+                    instruction.Foreground = Brushes.Red;
                     break;
             }
         }

@@ -25,5 +25,6 @@ namespace PatientRecordSystem.Model
         public UserAccountType AccountType { get; set; }
         public bool ResetFlag { get; set; }
         public bool ResetRequestFlag { get; set; }
+        public bool Disabled { get; set; }
     }
 }

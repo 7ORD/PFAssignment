@@ -31,14 +31,14 @@ namespace PatientRecordSystem.View
 
         private void Request_Click (object sender, RoutedEventArgs e)
         {
-            List<User> users = Instances.userManager.Users();
+            List<User> users = UserManager.GetInstance().Users();
 
             User user = users.Find(u => u.Username == UsernameInput.Text);
 
             if (user != null)
             {
                 user.ResetRequestFlag = true;
-                Instances.userManager.UpdateData(users);
+                UserManager.GetInstance().UpdateData(users);
             }
 
             NotificationWindow notificationWindow = new NotificationWindow("Forgot Password", "If the entered user exists, a password\nreset request will be sent to the system admin.");

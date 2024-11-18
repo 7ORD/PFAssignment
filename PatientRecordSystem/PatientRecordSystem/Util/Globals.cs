@@ -8,17 +8,20 @@ using System.Windows.Navigation;
 
 namespace PatientRecordSystem.Util
 {
-    public static class Instances
+    public static class Globals
     {
         public enum ValidationStatus
         {
             Validated,
             ValidatedReset,
-            InvalidCredentials
+            InvalidCredentials,
+            AccountDisabled
         }
 
-        public static NavigationService navService;
-
-        public static UserManager userManager = new UserManager();
+        public enum NewUserValidation
+        {
+            Valid,
+            Invalid
+        }
     }
 }

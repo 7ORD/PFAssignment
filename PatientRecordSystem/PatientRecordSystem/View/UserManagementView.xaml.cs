@@ -33,7 +33,7 @@ namespace PatientRecordSystem.View
         {
             InitializeComponent();
 
-            UserTable.DataContext = Instances.userManager.Users().Where(u => !u.Disabled);
+            UserTable.DataContext = UserManager.GetInstance().Users().Where(u => !u.Disabled);
         }
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +50,7 @@ namespace PatientRecordSystem.View
         {
             User user = UserTable.SelectedItem as User;
 
-            Instances.userManager.ResetPassword(user.Username);
+            UserManager.GetInstance().ResetPassword(user.Username);
 
             NotificationWindow notificationWindow = new NotificationWindow("Reset Password", "The user's password has been reset to\nthe default value (Example123)");
             notificationWindow.ShowDialog();
@@ -76,12 +76,12 @@ namespace PatientRecordSystem.View
             if (disabledView)
             {
                 disabledView = false;
-                UserTable.DataContext = Instances.userManager.Users().Where(u => !u.Disabled);
+                UserTable.DataContext = UserManager.GetInstance().Users().Where(u => !u.Disabled);
                 ShowDisabledButton.Content = "Show Disabled Users";
             } else
             {
                 disabledView = true;
-                UserTable.DataContext = Instances.userManager.Users().Where(u => u.Disabled);
+                UserTable.DataContext = UserManager.GetInstance().Users().Where(u => u.Disabled);
                 ShowDisabledButton.Content = "Show Active Users";
             }
 
@@ -92,7 +92,7 @@ namespace PatientRecordSystem.View
         /// </summary>
         private void Enable_Click (object sender, RoutedEventArgs e)
         {
-            List<User> users = Instances.userManager.Users();
+            List<User> users = UserManager.GetInstance().Users();
             User user = UserTable.SelectedItem as User;
 
             user.Disabled = !user.Disabled;
@@ -101,7 +101,7 @@ namespace PatientRecordSystem.View
             users[users.FindIndex(u => u.Username == user.Username)] = user;
 
             //Update the users json file
-            Instances.userManager.UpdateData(users);
+            UserManager.GetInstance().UpdateData(users);
 
             NotificationWindow notificationWindow = new NotificationWindow("Enabled", "The user account has been re enabled");
             notificationWindow.ShowDialog();
@@ -116,11 +116,11 @@ namespace PatientRecordSystem.View
         private void Delete_Click (object sender, RoutedEventArgs e)
         {
 
-            List<User> users = Instances.userManager.Users();
+            List<User> users = UserManager.GetInstance().Users();
 
             users.RemoveAt (users.FindIndex (u => u.Username == (UserTable.CurrentItem as User).Username));
 
-            Instances.userManager.UpdateData(users);
+            UserManager.GetInstance().UpdateData(users);
 
             NotificationWindow notificationWindow = new NotificationWindow("Deleted", "The user account has been deleted");
             notificationWindow.ShowDialog();

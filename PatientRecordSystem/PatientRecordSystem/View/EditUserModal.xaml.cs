@@ -73,7 +73,7 @@ namespace PatientRecordSystem.View
             user.AccountType = (User.UserAccountType)AccountType.SelectedIndex;
 
             // If the user is valid, enabled the edit button, else disable it.
-            if (Instances.userManager.IsUserValid(user))
+            if (UserManager.GetInstance().IsUserValid(user))
             {
                 EditButton.IsEnabled = true;
             }
@@ -99,7 +99,7 @@ namespace PatientRecordSystem.View
         private void Edit_Click (object sender, RoutedEventArgs e)
         {
             // Get the current list of users.
-            List<User> users = Instances.userManager.Users();
+            List<User> users = UserManager.GetInstance().Users();
             // Create a new user equal to the user we're editing
             User updatedUser = editingUser;
 
@@ -120,7 +120,7 @@ namespace PatientRecordSystem.View
 
             // Apply the edits to the json file and close this window.
             DialogResult = true;
-            Instances.userManager.UpdateData(users);
+            UserManager.GetInstance().UpdateData(users);
             Close();
         }
 
@@ -129,7 +129,7 @@ namespace PatientRecordSystem.View
         /// </summary>
         private void Disable_Click (object sender, RoutedEventArgs e)
         {
-            List<User> users = Instances.userManager.Users();
+            List<User> users = UserManager.GetInstance().Users();
             User user = users.Find(u => u.Username == editingUser.Username);
 
             user.Disabled = !user.Disabled;
@@ -138,7 +138,7 @@ namespace PatientRecordSystem.View
             users[users.FindIndex(u => u.Username == user.Username)] = user;
 
             // Update the users json file
-            Instances.userManager.UpdateData(users);
+            UserManager.GetInstance().UpdateData(users);
 
             // Create a new NotificationWindow and show this as a Dialog.
             NotificationWindow notificationWindow = new NotificationWindow("Disabled", "The user account has been disabled");

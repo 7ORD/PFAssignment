@@ -39,7 +39,7 @@ namespace PatientRecordSystem.View
         private void CreateAccount_Clicked (object sender, RoutedEventArgs e)
         {
             // Creates a new user
-            Instances.userManager.AddUser(newUser);
+            UserManager.GetInstance().AddUser(newUser);
             this.DialogResult = true;
             this.Close();
         }
@@ -61,7 +61,7 @@ namespace PatientRecordSystem.View
             user.ResetFlag = true;
 
             // If the user is valid, enable the Create User button, else keep it disabled
-            if (Instances.userManager.IsUserValid (user))
+            if (UserManager.GetInstance().IsUserValid (user))
             {
                 CreateButton.IsEnabled = true;
                 newUser = user;

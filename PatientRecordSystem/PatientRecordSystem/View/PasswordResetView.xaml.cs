@@ -36,7 +36,7 @@ namespace PatientRecordSystem.View
                 {
                     if (password.Password.Any(char.IsDigit) && password.Password.Any(char.IsUpper))
                     {
-                        Instances.userManager.UpdatePassword(Instances.userManager.currentUser.Username, password.Password);
+                        UserManager.GetInstance().UpdatePassword(UserManager.GetInstance().currentUser.Username, password.Password);
                         NavigationService.Navigate(new DashboardView());
                     } else
                     {
@@ -56,7 +56,7 @@ namespace PatientRecordSystem.View
 
         public void Logout_Click (object sender, RoutedEventArgs e)
         {
-            Instances.userManager.Logout();
+            UserManager.GetInstance().Logout();
             NavigationService.Navigate(new LoginView());
         }
 

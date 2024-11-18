@@ -10,8 +10,31 @@ using System.Text.RegularExpressions;
 
 namespace PatientRecordSystem.Util
 {
-    public class UserManager
+    public sealed class UserManager
     {
+
+        private UserManager ()
+        {
+        }
+
+        // UserManager singleton property.
+        private static UserManager instance;
+
+        /// <summary>
+        /// Method to retrieve the current instance of this object.
+        /// If there is already an active instance of the object, then return it. Otherwise, create a new instance.
+        /// </summary>
+        /// <returns>Returns the instance of UserManager if it exists, otherwise returns a new instance.</returns>
+        public static UserManager GetInstance ()
+        {
+            if (instance == null)
+            {
+                instance = new UserManager();
+            }
+
+            return instance;
+        }
+
         public User currentUser { get; private set; }
 
         /// <summary>
@@ -66,7 +89,7 @@ namespace PatientRecordSystem.Util
 
             if (emailRegex.IsMatch(user.Username))  //Checks username against the emailRegex
             {
-                if (!Instances.userManager.Users().Any(u => u.Username == user.Username)) //Checks if the email address does not already exist in the users.json
+                if (!UserManager.GetInstance().Users().Any(u => u.Username == user.Username)) //Checks if the email address does not already exist in the users.json
                 {
                     if (nameRegex.IsMatch(user.FirstName))  //Checks firstName against the nameRegex
                     {
@@ -97,8 +120,8 @@ namespace PatientRecordSystem.Util
         /// </summary>
         /// <param name="username">The username of the user to validate</param>
         /// <param name="password">The password of the user to validate</param>
-        /// <returns>Returns an Instances.ValidationStatus value to give more context on the validation attempt</returns>
-        public Instances.ValidationStatus ValidateUser(string username, string password)
+        /// <returns>Returns an Globals.ValidationStatus value to give more context on the validation attempt</returns>
+        public Globals.ValidationStatus ValidateUser(string username, string password)
         {
             foreach (User user in Users ())
             {
@@ -108,24 +131,24 @@ namespace PatientRecordSystem.Util
                     {
                         if (user.Disabled)
                         {
-                            return Instances.ValidationStatus.AccountDisabled;
+                            return Globals.ValidationStatus.AccountDisabled;
                         }
 
                         Login(user);
 
                         if (user.ResetFlag)
                         {
-                            return Instances.ValidationStatus.ValidatedReset;
+                            return Globals.ValidationStatus.ValidatedReset;
                         }
-                        return Instances.ValidationStatus.Validated;
+                        return Globals.ValidationStatus.Validated;
                     } else
                     {
                         Logout();
-                        return Instances.ValidationStatus.InvalidCredentials;
+                        return Globals.ValidationStatus.InvalidCredentials;
                     }
                 }
             }
-            return Instances.ValidationStatus.InvalidCredentials;
+            return Globals.ValidationStatus.InvalidCredentials;
         }
 
         /// <summary>

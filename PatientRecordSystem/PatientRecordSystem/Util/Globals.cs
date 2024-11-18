@@ -8,7 +8,7 @@ using System.Windows.Navigation;
 
 namespace PatientRecordSystem.Util
 {
-    public static class Instances
+    public static class Globals
     {
         public enum ValidationStatus
         {
@@ -23,9 +23,5 @@ namespace PatientRecordSystem.Util
             Valid,
             Invalid
         }
-
-        public static NavigationService navService;
-
-        public static UserManager userManager = new UserManager();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PatientRecordSystem.Util;
 
 namespace PatientRecordSystem.View
 {
@@ -23,6 +25,12 @@ namespace PatientRecordSystem.View
         public PatientsView()
         {
             InitializeComponent();
+        }
+
+        private void Test_Click (object sender, RoutedEventArgs e)
+        {
+            Trace.WriteLine(PatientManager.GetInstance().Patients()[0].Address.ParsedAddress());
+            Trace.WriteLine(PatientManager.GetInstance().Patients()[0].HospitalNumber());
         }
     }
 }

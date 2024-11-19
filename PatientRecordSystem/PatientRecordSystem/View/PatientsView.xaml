@@ -9,6 +9,42 @@
       Title="PatientsView">
 
     <Grid Margin="32">
-        <TextBlock Text="Patients" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="152*"/>
+            <RowDefinition Height="215*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" FontSize="22" Text="Patient Management" />
+        <Button Grid.Row="0" Grid.Column="2" Content="Create new user" Margin="4,0,0,6"/>
+
+        <DataGrid Name="UserTable" Grid.ColumnSpan="3" Grid.Row="1" RowHeight="32" ColumnHeaderHeight="32" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="0,19,0,0" Grid.RowSpan="3">
+            <DataGrid.Columns >
+                <DataGridTextColumn Width="5*"  Header="First Name" Binding="{ Binding FirstName }"/>
+                <DataGridTextColumn Width="5*" Header="Last Name" Binding="{ Binding LastName }"/>
+                <DataGridTextColumn Width="8*" Header="Email (Username)" Binding="{ Binding Username }"/>
+                <DataGridTextColumn Width="6*" Header="Account Type" Binding="{ Binding AccountType }"/>
+                <DataGridTextColumn Width="7*" Header="Forgot Password" Binding="{ Binding ResetRequestFlag }" />
+                <DataGridTemplateColumn Header="Action" Width="5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="7*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0"  Content="Enable" BorderThickness="0 0 1 0"/>
+                                <Button Grid.Column="1"  Content="Delete User" BorderThickness="0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

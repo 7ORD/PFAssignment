@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PatientRecordSystem.Model;
+using PatientRecordSystem.Util;
 
 namespace PatientRecordSystem.View
 {
@@ -24,53 +25,137 @@ namespace PatientRecordSystem.View
     {
         public PatientRecordModal(Patient CurrentPatient)
         {
-            InitializeComponent();
-            currentPatient = CurrentPatient;
 
-            Trace.WriteLine(CurrentPatient.FirstName);
-            PopulateFields();
-            ToggleEnable(false);
+            InitializeComponent();
+
+            Editing = true;
+            currentPatient = CurrentPatient;
+            ToggleEditMode();
+           
+            PopulateFields(CurrentPatient);
         }
 
-
+        private bool populated = false;
+        private bool Editing;
         private Patient currentPatient;
-        public bool Editing = true;
+        private Patient editedPatient;
 
-
-        private void PopulateFields ()
+        private void PopulateFields (Patient patient)
         {
-            Title.Text = $"Patient Record - {currentPatient.HospitalNumber}";
-            FirstName.Text = currentPatient.FirstName;
-            LastName.Text = currentPatient.LastName;
-            AddressFirstLine.Text = currentPatient.Address.FirstLine;
-            AddressSecondLine.Text = currentPatient.Address.SecondLine;
-            AddressCity.Text = currentPatient.Address.Town;
-            AddressPostcode.Text = currentPatient.Address.PostCode;
-            DOB.Text = currentPatient.DateOfBirth.ToString ();
-            ContactNumber.Text = currentPatient.ContactNumber;
-            NHSNumber.Text = currentPatient.NHSNumber;
+            Trace.WriteLine($"{currentPatient.FirstName} {currentPatient.LastName}");
+
+            Title.Text = $"Patient Record - {patient.HospitalNumber}";
+            FirstName.Text = patient.FirstName;
+            LastName.Text = patient.LastName;
+            AddressFirstLine.Text = patient.Address.FirstLine;
+            AddressSecondLine.Text = patient.Address.SecondLine;
+            AddressCity.Text =  patient.Address.Town;
+            AddressPostcode.Text = patient.Address.PostCode;
+            DOB.SelectedDate = patient.DateOfBirth.ToDateTime(new TimeOnly (0));
+            ContactNumber.Text = patient.ContactNumber;
+            NHSNumber.Text = patient.NHSNumber;
+
+            EditButton.IsEnabled = true;
+            populated = true;
+
+            Trace.WriteLine(currentPatient.LastName);
+        }
+
+        private void UpdatePatient ()
+        {
+            currentPatient.FirstName = FirstName.Text;
+            currentPatient.LastName = LastName.Text;
+            currentPatient.Address.FirstLine = AddressFirstLine.Text;
+            currentPatient.Address.SecondLine = AddressSecondLine.Text;
+            currentPatient.Address.Town = AddressCity.Text;
+            currentPatient.Address.PostCode = AddressPostcode.Text;
+            currentPatient.ContactNumber = ContactNumber.Text;
+            currentPatient.DateOfBirth = DateOnly.FromDateTime((DateTime) DOB.SelectedDate);
+            currentPatient.NHSNumber = NHSNumber.Text;
         }
 
         private void Edit_Click (object sender, RoutedEventArgs e)
         {
-            ToggleEnable(!Editing);
+
+            if (!Editing)
+            {
+                ToggleEditMode();
+                return;
+            }
+
+            List<Patient> patientList = PatientManager.GetInstance().Patients();
+
+            UpdatePatient();
+
+            patientList[PatientManager.GetInstance().Patients().FindIndex(p => p.Id == currentPatient.Id)] = currentPatient;
+
+
+            PatientManager.GetInstance().UpdateData(patientList);
+
+            NotificationWindow notificationWindow = new NotificationWindow("Patient Edited", "The patient's information has been updated");
+            notificationWindow.ShowDialog();
+
+            if (notificationWindow.DialogResult == true)
+            {
+                this.DialogResult = true;
+                Close();
+            }
         }
 
-        private void ToggleEnable(bool state)
+        private void Records_Click (object sender, RoutedEventArgs e)
         {
-            Editing = state;
+            if (Editing)
+            {
+                PopulateFields(editedPatient);
+                ToggleEditMode();
+                return;
+            }
+        }
+
+        private void Validate (object sender, RoutedEventArgs e)
+        {
+
+            if (populated)
+            {
+                UpdatePatient();
+            }
+
+            Trace.WriteLine(currentPatient.NHSNumber);
+            Trace.WriteLine(editedPatient.NHSNumber);
+
+                if (PatientManager.GetInstance().IsPatientValid(currentPatient))
+                {
+                    EditButton.IsEnabled = true;
+                }
+                else 
+                { 
+                    EditButton.IsEnabled = false; 
+                }
+        }
+
+        private void ToggleEditMode ()
+        {
+            Editing = !Editing;
 
             FirstName.IsEnabled = Editing;
             LastName.IsEnabled = Editing;
-            AddressFirstLine.IsEnabled = Editing;
-            AddressSecondLine.IsEnabled = Editing;
-            AddressCity.IsEnabled = Editing;
-            AddressPostcode.IsEnabled = Editing;
-            AddressPostcode.IsEnabled = Editing;
-            DOB.IsEnabled = Editing;
-            EditDoBButton.IsEnabled = Editing;
+            AddressBox.IsEnabled = Editing;
             ContactNumber.IsEnabled = Editing;
+            DOB.IsEnabled = Editing;
             NHSNumber.IsEnabled = Editing;
+
+            if (Editing)
+            {
+                editedPatient = currentPatient;
+                EditButton.Content = "Save Edits";
+                RecordsButton.Content = "Discard Edits";
+            } else
+            {
+
+                editedPatient = new Patient();
+                EditButton.Content = "Edit Patient";
+                RecordsButton.Content = "View Records";
+            }
         }
     }
 }

@@ -29,19 +29,19 @@
 
             <StackPanel Margin="8" Grid.Column="0">
                 <TextBlock Text="First Name"/>
-                <TextBox Name="FirstName" Margin="0 4 0 0" Padding="4" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+                <TextBox Name="FirstName" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
             </StackPanel>
 
             <StackPanel Margin="8" Grid.Column="1">
                 <TextBlock Text="Last Name"/>
-                <TextBox Name="LastName" Margin="0 4 0 0" Padding="4" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+                <TextBox Name="LastName" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="2" Margin="8">
             <TextBlock Text="Address" />
             <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="3" Margin="0 20 0 0">
-                <Grid>
+                <Grid Name="AddressBox">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -51,19 +51,19 @@
 
                     <StackPanel Grid.Row="0" Margin="8">
                         <TextBlock Text="First Line" />
-                        <TextBox Name="AddressFirstLine" Margin="0 4 0 0" Padding="4" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+                        <TextBox Name="AddressFirstLine" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Margin="8">
                         <TextBlock Text="Second Line" />
-                        <TextBox Name="AddressSecondLine" Margin="0 4 0 0" Padding="4" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+                        <TextBox Name="AddressSecondLine" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Margin="8">
                         <TextBlock Text="City" />
-                        <TextBox Name="AddressCity" Margin="0 4 0 0" Padding="4" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+                        <TextBox Name="AddressCity" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
                     </StackPanel>
                     <StackPanel Grid.Row="3" Margin="8">
                         <TextBlock Text="Postcode" />
-                        <TextBox Name="AddressPostcode" Margin="0 4 0 0" Padding="4" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+                        <TextBox Name="AddressPostcode" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -71,25 +71,17 @@
 
         <StackPanel Grid.Row="3" Margin="8">
             <TextBlock Text="Date of Birth" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <TextBox Grid.Column="0" Name="DOB" Padding="4" Margin="0 4 4 0" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
-                <Button Grid.Column="1" Margin="0 4 4 0" Content="Edit DoB" Name="EditDoBButton" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
-            </Grid>
+            <DatePicker Name="DOB" Margin="0 4 4 0" Padding="4" SelectedDateChanged="Validate"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Margin="8">
             <TextBlock Text="Contact Number"/>
-            <TextBox Name="ContactNumber" Padding="4" Margin="0 4 4 0" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+            <TextBox Name="ContactNumber" Padding="4" Margin="0 4 4 0" TextChanged="Validate"/>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Margin="8">
             <TextBlock Text="NHS Number"/>
-            <TextBox Name="NHSNumber" Padding="4" Margin="0 4 4 0" IsEnabled="{Binding Editing, Mode=TwoWay}"/>
+            <TextBox Name="NHSNumber" Padding="4" Margin="0 4 4 0" TextChanged="Validate"/>
         </StackPanel>
 
         <Grid Grid.Row="6" Margin="8">
@@ -98,8 +90,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Margin="0 8 4 8" Content="Toggle Edit Mode"/>
-            <Button Grid.Column="1" Margin="0 8 4 8" Content="View Records"/>
+            <Button Name="EditButton" Grid.Column="0" Margin="0 8 4 8" Content="Edit Patient" Click="Edit_Click"/>
+            <Button Name="RecordsButton" Grid.Column="1" Margin="0 8 4 8" Content="View Records" Click="Records_Click"/>
         </Grid>
     </Grid>
 </Window>

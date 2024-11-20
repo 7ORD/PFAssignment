@@ -24,16 +24,16 @@
         <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" FontSize="22" Text="Patient Management" />
         <TextBlock Grid.Column="1" Text="Patient Search" VerticalAlignment="Center" Margin="4 0 16 6" HorizontalAlignment="Right"/>
         <TextBox Name="SearchBar" Grid.Column="2" Margin="4,0,0,6"  VerticalContentAlignment="Center" Padding="8 0" ToolTip="Enter any information relating to a patient to update the table"/>
-        <Button Grid.Row="0" Grid.Column="3" Content="Create new user" Margin="4,0,0,6"/>
+        <Button Grid.Row="0" Grid.Column="3" Content="Register new Patient" Margin="4,0,0,6"/>
 
         <DataGrid Name="PatientTable" Grid.ColumnSpan="4" Grid.Row="1" RowHeight="32" ColumnHeaderHeight="32" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="0,19,0,0" Grid.RowSpan="3">
             <DataGrid.Columns >
-                <DataGridTextColumn Width="4*"  Header="First Name" Binding="{ Binding FirstName }"/>
-                <DataGridTextColumn Width="4*" Header="Last Name" Binding="{ Binding LastName }"/>
+                <DataGridTextColumn Width="3*"  Header="First Name" Binding="{ Binding FirstName }"/>
+                <DataGridTextColumn Width="3*" Header="Last Name" Binding="{ Binding LastName }"/>
                 <DataGridTextColumn Width="8*" Header="Address" Binding="{ Binding ParsedAddress }"/>
-                <DataGridTextColumn Width="2*" Header="Contact Number" Binding="{ Binding ContactNumber }"/>
+                <DataGridTextColumn Width="2*" Header="Contact No." Binding="{ Binding ContactNumber }"/>
                 <DataGridTextColumn Width="2*" Header="NHS Number" Binding="{ Binding NHSNumber }" />
-                <DataGridTextColumn Width="2*" Header="Hospital ID" Binding="{ Binding HospitalNumber }" />
+                <DataGridTextColumn Width="3*" Header="Hospital ID" Binding="{ Binding HospitalNumber }" />
                 <DataGridTemplateColumn Header="Action" Width="4*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

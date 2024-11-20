@@ -6,12 +6,27 @@
         "DateOfBirth": "1998-05-05",
         "DateCreated": "2024-11-19",
         "ContactNumber": "07498494366",
-        "NHSNumber":  "123 456 7890",
+        "NHSNumber": "123 456 7890",
         "Address": {
             "FirstLine": "Irisdale Hill Road",
             "SecondLine": "Bircotes",
             "Town": "Doncaster",
-            "PostCode":  "DN11 8JR"
+            "PostCode": "DN11 8JR"
+        }
+    },
+    {
+        "Id": 2,
+        "FirstName": "John",
+        "LastName": "Patient",
+        "DateOfBirth": "1975-01-14",
+        "DateCreated": "2024-11-20",
+        "ContactNumber": "07123456789",
+        "NHSNumber": "098 765 4321",
+        "Address": {
+            "FirstLine": "123 Town Road",
+            "SecondLine": "Smalltown",
+            "Town": "City",
+            "PostCode": "CI1 3EX"
         }
     }
 ]

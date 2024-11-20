@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PatientRecordSystem.Util;
+using PatientRecordSystem.Model;
 
 namespace PatientRecordSystem.View
 {
@@ -25,12 +26,23 @@ namespace PatientRecordSystem.View
         public PatientsView()
         {
             InitializeComponent();
+            PatientTable.DataContext = PatientManager.GetInstance().Patients();
+        }
+        
+        private void SearchBar_KeyUp (object sender, KeyEventArgs e)
+        {
+            // TODO - Search bar functionality
         }
 
-        private void Test_Click (object sender, RoutedEventArgs e)
+        private void PatientRecord_Click (object sender, RoutedEventArgs e)
         {
-            Trace.WriteLine(PatientManager.GetInstance().Patients()[0].Address.ParsedAddress());
-            Trace.WriteLine(PatientManager.GetInstance().Patients()[0].HospitalNumber());
+            PatientRecordModal patientRecordModal = new PatientRecordModal(PatientTable.SelectedItem as Patient);
+            patientRecordModal.ShowDialog();
+
+            if (patientRecordModal.DialogResult == true)
+            {
+                NavigationService.Navigate(new PatientsView());
+            }
         }
     }
 }

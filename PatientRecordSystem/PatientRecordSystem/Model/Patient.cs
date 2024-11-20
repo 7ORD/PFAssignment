@@ -19,9 +19,13 @@ namespace PatientRecordSystem.Model
         public Address Address { get; set; }
 
         
-        public string HospitalNumber ()
+        public string ParsedAddress
         {
-            return new string($"PRS-{DateCreated}-{Id.ToString("000")}").Replace ("/","");
+            get => new string($"{Address.FirstLine}, {Address.SecondLine}, {Address.Town}, {Address.PostCode}");
+        }
+        public string HospitalNumber 
+        {
+            get => new string($"PRS-{DateCreated}-{Id.ToString("000")}").Replace("/", "");
         }
     }
 }

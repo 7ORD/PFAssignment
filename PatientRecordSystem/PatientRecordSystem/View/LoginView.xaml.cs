@@ -50,6 +50,22 @@ namespace PatientRecordSystem.View
             }
         }
 
+        private void Skip_Click (object sender, RoutedEventArgs e)
+        {
+            Globals.ValidationStatus status = UserManager.GetInstance().ValidateUser("admin@example.com", UserManager.Hash("Example123"));
+            ValidationInformation(status);
+
+            switch (status)
+            {
+                case Globals.ValidationStatus.Validated:
+                    NavigationService.Navigate(new DashboardView());
+                    break;
+                case Globals.ValidationStatus.ValidatedReset:
+                    NavigationService.Navigate(new PasswordResetView());
+                    break;
+            }
+        }
+
         private void ForgotPassword_Click (object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ForgotPasswordView());

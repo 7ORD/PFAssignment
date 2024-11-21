@@ -37,6 +37,9 @@
     <Compile Update="View\PatientRecordModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\PatientRegistrationModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\PatientsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

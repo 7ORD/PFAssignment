@@ -42,5 +42,13 @@ namespace PatientRecordSystem.Model
 
             return true;
         }
+
+        public Address (string firstLine, string secondLine, string town, string postCode)
+        {
+            FirstLine = firstLine;
+            SecondLine = secondLine;
+            Town = town;
+            PostCode = postCode;
+        }
     }
 }

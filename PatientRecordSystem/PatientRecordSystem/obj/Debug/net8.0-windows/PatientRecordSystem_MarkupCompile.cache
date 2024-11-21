@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\App.xaml
-13345837155
+14-1717436736
 
-23669737317
+241435326310
 198-556154604
-View\AppointmentsView.xaml;View\DashboardView.xaml;View\EditUserModal.xaml;View\ForgotPasswordView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainWindow.xaml;View\NewUserModal.xaml;View\NotificationWindow.xaml;View\PasswordResetView.xaml;View\PatientRecordModal.xaml;View\PatientsView.xaml;View\UserManagementView.xaml;
+View\AppointmentsView.xaml;View\DashboardView.xaml;View\EditUserModal.xaml;View\ForgotPasswordView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainWindow.xaml;View\NewUserModal.xaml;View\NotificationWindow.xaml;View\PasswordResetView.xaml;View\PatientRecordModal.xaml;View\PatientRegistrationModal.xaml;View\PatientsView.xaml;View\UserManagementView.xaml;
 
 False
 

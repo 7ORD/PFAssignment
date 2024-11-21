@@ -17,15 +17,27 @@ namespace PatientRecordSystem.Model
         public string ContactNumber { get; set; }
         public string NHSNumber { get; set; }
         public Address Address { get; set; }
-
-        
         public string ParsedAddress
         {
             get => new string($"{Address.FirstLine}, {Address.SecondLine}, {Address.Town}, {Address.PostCode}");
+            private set { }
         }
         public string HospitalNumber 
         {
             get => new string($"PRS-{DateCreated}-{Id.ToString("000")}").Replace("/", "");
+            private set { }
+        }
+
+        public Patient ()
+        {
+            Id = 0;
+            FirstName = "";
+            LastName = "";
+            DateOfBirth = DateOnly.FromDateTime(DateTime.Now);
+            DateCreated = DateOnly.FromDateTime(DateTime.Now);
+            ContactNumber = "";
+            NHSNumber = "";
+            Address = new Address("", "", "", "");
         }
     }
 }

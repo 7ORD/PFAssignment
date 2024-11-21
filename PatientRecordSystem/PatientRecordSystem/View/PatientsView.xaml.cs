@@ -44,5 +44,16 @@ namespace PatientRecordSystem.View
                 NavigationService.Navigate(new PatientsView());
             }
         }
+
+        private void Registration_Click(object sender, RoutedEventArgs e)
+        {
+            PatientRegistrationModal patientRegistrationModal = new PatientRegistrationModal();
+            patientRegistrationModal.ShowDialog();
+
+            if (patientRegistrationModal.DialogResult == true)
+            {
+                NavigationService.Navigate(new PatientsView());
+            }
+        }
     }
 }

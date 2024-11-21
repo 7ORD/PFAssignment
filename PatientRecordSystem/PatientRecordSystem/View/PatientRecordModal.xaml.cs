@@ -42,8 +42,6 @@ namespace PatientRecordSystem.View
 
         private void PopulateFields (Patient patient)
         {
-            Trace.WriteLine($"{currentPatient.FirstName} {currentPatient.LastName}");
-
             Title.Text = $"Patient Record - {patient.HospitalNumber}";
             FirstName.Text = patient.FirstName;
             LastName.Text = patient.LastName;
@@ -76,7 +74,6 @@ namespace PatientRecordSystem.View
 
         private void Edit_Click (object sender, RoutedEventArgs e)
         {
-
             if (!Editing)
             {
                 ToggleEditMode();
@@ -114,23 +111,19 @@ namespace PatientRecordSystem.View
 
         private void Validate (object sender, RoutedEventArgs e)
         {
-
             if (populated)
             {
                 UpdatePatient();
             }
 
-            Trace.WriteLine(currentPatient.NHSNumber);
-            Trace.WriteLine(editedPatient.NHSNumber);
-
-                if (PatientManager.GetInstance().IsPatientValid(currentPatient))
-                {
-                    EditButton.IsEnabled = true;
-                }
-                else 
-                { 
-                    EditButton.IsEnabled = false; 
-                }
+            if (PatientManager.GetInstance().IsPatientValid(currentPatient))
+            {
+                EditButton.IsEnabled = true;
+            }
+            else 
+            { 
+                EditButton.IsEnabled = false; 
+            }
         }
 
         private void ToggleEditMode ()

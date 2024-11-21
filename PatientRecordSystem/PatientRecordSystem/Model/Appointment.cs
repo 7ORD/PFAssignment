@@ -8,6 +8,7 @@ namespace PatientRecordSystem.Model
 {
     public class Appointment
     {
+        public string AppointmentId { get; set; }
         public string PatientId { get; set; }
         public string Doctor { get; set; }
         public DateTime DateTime { get; set; }

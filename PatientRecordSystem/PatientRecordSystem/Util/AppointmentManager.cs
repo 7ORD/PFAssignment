@@ -26,8 +26,20 @@ namespace PatientRecordSystem.Util
         private List<Appointment> Appointments()
         {
             string jsonPath = Environment.CurrentDirectory + @"\Data\Appointments.json";
-            string jsonText = File.ReadAllText(jsonPath);
-            return JsonSerializer.Deserialize<List<Appointment>>(jsonText);
+
+            if (File.Exists(jsonPath))
+            {
+                string jsonText = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<Appointment>>(jsonText);
+            }
+            else
+            { 
+                File.Create (jsonPath).Dispose ();
+                File.WriteAllText(jsonPath, "[]");
+                string jsonText = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<Appointment>>(jsonText);
+            }
+
         }
 
         private void UpdateData (List<Appointment> appointments)

@@ -35,8 +35,19 @@ namespace PatientRecordSystem.Util
         public List<Patient> Patients ()
         {
             string jsonPath = Environment.CurrentDirectory + @"\Data\patients.json";
-            string jsonString = File.ReadAllText(jsonPath);
-            return JsonSerializer.Deserialize<List<Patient>>(jsonString);
+            if (File.Exists(jsonPath))
+            {
+                string jsonString = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<Patient>>(jsonString);
+            }
+            else
+            {
+                File.Create(jsonPath).Dispose();
+                File.WriteAllText(jsonPath, "[]");
+                string jsonString = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<Patient>>(jsonString);
+            }
+
         }
 
         public void UpdateData (List<Patient> patients)

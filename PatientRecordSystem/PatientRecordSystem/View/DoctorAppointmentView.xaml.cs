@@ -2,6 +2,7 @@
 using PatientRecordSystem.Util;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,14 @@ using System.Windows.Shapes;
 namespace PatientRecordSystem.View
 {
     /// <summary>
-    /// Interaction logic for DoctorAppointmentvIEW.xaml
+    /// Interaction logic for DoctorAppointmentView.xaml
     /// </summary>
     public partial class DoctorAppointmentView : Page
     {
 
         private List<User> Doctors = UserManager.GetInstance ().Users ().Where (u => u.AccountType == User.UserAccountType.Doctor).ToList ();
         private User currentDoctor;
+        private List<Appointment> appointments;
         private bool Visible;
 
         public DoctorAppointmentView()
@@ -37,7 +39,6 @@ namespace PatientRecordSystem.View
 
         private void Schedule_Click (object sender, RoutedEventArgs e)
         {
-
             currentDoctor = DoctorTable.SelectedItem as User;
             Visible = true;
             UpdateSchedule();
@@ -49,6 +50,16 @@ namespace PatientRecordSystem.View
             Visible = false;
             UpdateSchedule();
         }
+        
+        private void NewAppointment_Click (object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Date_Changed (object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule();
+        }
 
         private void UpdateSchedule ()
         {
@@ -57,10 +68,16 @@ namespace PatientRecordSystem.View
                 Grid.SetColumnSpan(DoctorTable, 1);
                 Grid.SetColumnSpan(ScheduleBox, 1);
                 ScheduleBox.Visibility = Visibility.Visible;
-
+                
                 SBTitle.Text = $"Schedule for {currentDoctor.FirstName} {currentDoctor.LastName}";
-                SBDatePicker.SelectedDate = DateTime.Now;
-            } else
+
+                if (SBDatePicker.SelectedDate != null) { 
+
+                    SBSchedule.DataContext = currentDoctor.AppointmentsToday(DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate));
+
+                }
+            } 
+            else
             {
                 ScheduleBox.Visibility = Visibility.Collapsed;
                 Grid.SetColumnSpan(DoctorTable, 2);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PatientRecordSystem.Model
@@ -17,11 +18,15 @@ namespace PatientRecordSystem.Model
         public string ContactNumber { get; set; }
         public string NHSNumber { get; set; }
         public Address Address { get; set; }
+        public List<int> Appointments { get; set; }
+
+        [JsonIgnore]
         public string ParsedAddress
         {
             get => new string($"{Address.FirstLine}, {Address.SecondLine}, {Address.Town}, {Address.PostCode}");
             private set { }
         }
+        [JsonIgnore]
         public string HospitalNumber 
         {
             get => new string($"PRS-{DateCreated}-{Id.ToString("000")}").Replace("/", "");

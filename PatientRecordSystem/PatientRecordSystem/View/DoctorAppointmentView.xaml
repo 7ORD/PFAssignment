@@ -18,7 +18,7 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Width="3*"  Header="First Name" Binding="{ Binding FirstName }"/>
-                <DataGridTextColumn Width="3*"  Header="Last Name" Binding="{ Binding FirstName }"/>
+                <DataGridTextColumn Width="3*"  Header="Last Name" Binding="{ Binding LastName }"/>
                 <DataGridTextColumn Width="4*"/>
                 <DataGridTemplateColumn Header="Action" Width="3*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -48,11 +48,28 @@
                     
                     <StackPanel Margin="0 0 0 16">
                         <TextBlock Text="Select a date on which to view this doctor's schedule" Margin="0 0 0 6"/>
-                        <DatePicker Name="SBDatePicker" Padding="4" />
+                        <DatePicker Name="SBDatePicker" Padding="4" SelectedDateChanged="Date_Changed"/>
                     </StackPanel>
 
-                    <Border BorderBrush="Black" BorderThickness="0.5">
-                    
+                    <Border BorderBrush="Black" BorderThickness="0.7 0.8 0 0">
+                        <DataGrid Name="SBSchedule" Style="{ StaticResource Schedule }" ItemsSource="{Binding}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Test" Binding="{ Binding Time }" Width="2*"/>
+                                <DataGridTextColumn x:Name="Test" Header="Test" Binding="{ Binding PatientName }" Width="15*"/>
+                                <DataGridTemplateColumn Header="Action" Width="4*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button Name="RowButton" Grid.Column="0"  Content="Create Appointment" BorderThickness="0 0 1 0" Click="NewAppointment_Click"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Border>
                 </StackPanel>
 

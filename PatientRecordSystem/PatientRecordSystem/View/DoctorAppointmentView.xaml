@@ -4,9 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PatientRecordSystem.View"
+      xmlns:util="clr-namespace:PatientRecordSystem.Util"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DoctorAppointmentView">
+
+    <Page.Resources>
+        <util:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -55,7 +60,7 @@
                         <DataGrid Name="SBSchedule" Style="{ StaticResource Schedule }" ItemsSource="{Binding}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Test" Binding="{ Binding Time }" Width="2*"/>
-                                <DataGridTextColumn x:Name="Test" Header="Test" Binding="{ Binding PatientName }" Width="15*"/>
+                                <DataGridTextColumn Header="Test" Binding="{ Binding AppointmentDetails }" Width="15*"/>
                                 <DataGridTemplateColumn Header="Action" Width="4*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -63,7 +68,8 @@
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
-                                                <Button Name="RowButton" Grid.Column="0"  Content="Create Appointment" BorderThickness="0 0 1 0" Click="NewAppointment_Click"/>
+                                                <Button Grid.Column="0"  Content="Appointment Details" BorderThickness="0 0 1 0" Click="AppointmentDetails_Click" Background="PaleGreen"/>
+                                                <Button Grid.Column="0"  Content="Create Appointment" BorderThickness="0 0 1 0" Click="NewAppointment_Click" Visibility="{Binding Populated, Converter={StaticResource BoolVisibilityConverter}}"/>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

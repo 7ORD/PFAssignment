@@ -56,6 +56,11 @@ namespace PatientRecordSystem.View
 
         }
 
+        private void AppointmentDetails_Click (object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Date_Changed (object sender, RoutedEventArgs e)
         {
             UpdateSchedule();
@@ -65,6 +70,11 @@ namespace PatientRecordSystem.View
         {
             if (Visible)
             {
+                if (SBDatePicker.SelectedDate == null)
+                {
+                    SBDatePicker.SelectedDate = DateTime.Today;
+                }
+                
                 Grid.SetColumnSpan(DoctorTable, 1);
                 Grid.SetColumnSpan(ScheduleBox, 1);
                 ScheduleBox.Visibility = Visibility.Visible;
@@ -74,7 +84,6 @@ namespace PatientRecordSystem.View
                 if (SBDatePicker.SelectedDate != null) { 
 
                     SBSchedule.DataContext = currentDoctor.AppointmentsToday(DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate));
-
                 }
             } 
             else

@@ -15,14 +15,13 @@ namespace PatientRecordSystem.Model
         public string Doctor { get; set; }
         public DateOnly Date { get; set; }
         public int Slot { get; set; }
+        public string BriefDescription { get; set; }
         public string Description { get; set; }
         public string AppointmentCreator { get; set; }
 
-        [JsonIgnore]
-        public TimeOnly Time { get; set; }
 
         [JsonIgnore]
-        public string PatientName
+        public string AppointmentDetails
         {
             get
             {
@@ -30,17 +29,34 @@ namespace PatientRecordSystem.Model
 
                 if (patient == null)
                 {
-                    return "No appointment schedule in this time slot";
+                    return "Free";
                 } else
                 {
-                    return $"{patient.FirstName} {patient.LastName}";
+                    return $"{patient.FirstName} {patient.LastName} - {BriefDescription}";
                 }
+                
             }
-            set {
-
-            }
+            set { }
         }
 
+        [JsonIgnore]
+        public TimeOnly Time { get; set; }
+
+        [JsonIgnore]
+        public bool Populated
+        {
+            get
+            {
+                if (Slot > 0)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+            }
+            set { }
+        }
         public Appointment ()
         {
             AppointmentId = -1;

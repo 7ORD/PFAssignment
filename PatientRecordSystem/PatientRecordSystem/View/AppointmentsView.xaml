@@ -28,7 +28,6 @@
                 <TextBlock Name="Title" Grid.Column="0" FontWeight="SemiBold" FontSize="22" Text="Appointment Manager" />
 
                 <Button Grid.Row="0" Grid.Column="3" Content="Create a new Appointment" Margin="4,0,0,6" Click="NewAppointment_Click"/>
-                <Button Grid.Row="0" Grid.Column="2" Content="Toggle View" Margin="4,0,0,6" Click="ToggleView_Click"/>
         </Grid>
 
         <Grid Grid.Row="1" Background="White">

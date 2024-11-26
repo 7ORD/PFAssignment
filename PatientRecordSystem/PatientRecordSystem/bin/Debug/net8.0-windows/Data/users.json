@@ -16,7 +16,7 @@
     "FirstName": "John",
     "LastName": "Doe",
     "AccountType": 1,
-    "Appointments": [],
+    "Appointments": [0],
     "ResetFlag": true,
     "ResetRequestFlag": false,
     "Disabled": false

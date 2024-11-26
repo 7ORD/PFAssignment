@@ -152,3 +152,5 @@ C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSys
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientAppointmentView.baml
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentCreationModal.g.cs
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentCreationModal.baml
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentCreationModal.g.cs
+C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentCreationModal.baml

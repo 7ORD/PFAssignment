@@ -20,13 +20,7 @@ namespace PatientRecordSystem.View
     /// </summary>
     public partial class AppointmentsView : Page
     {
-        private enum View
-        {
-            Patient,
-            Doctor
-        }
 
-        private View currentView = View.Patient;
 
         public AppointmentsView()
         {
@@ -36,39 +30,21 @@ namespace PatientRecordSystem.View
 
         private void NewAppointment_Click (object sender, RoutedEventArgs e)
         {
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal();
+            appointmentCreationModal.ShowDialog();
 
-        }
-
-        private void ToggleView_Click (Object sender, RoutedEventArgs e)
-        {
-            SwitchView();
-        }
-
-        private void SwitchView ()
-        {
-            if (currentView == View.Patient)
+            if (appointmentCreationModal.DialogResult == true)
             {
-                currentView = View.Doctor;
-            } 
-            else
-            {
-                currentView = View.Patient;
+                NavigationService.Navigate(new AppointmentsView());
             }
-
-            UpdatePage();
         }
+
+
 
         private void UpdatePage ()
         {
-            if (currentView == View.Patient)
-            {
-                ContentFrame.Navigate(new PatientAppointmentView());
-                Title.Text = "Appointment Manager - Patients";
-            } else if (currentView == View.Doctor)
-            {
-                ContentFrame.Navigate (new DoctorAppointmentView());
-                Title.Text = "Appointment Manager - Doctors";
-            }
+            ContentFrame.Navigate (new DoctorAppointmentView());
+            Title.Text = "Appointment Manager";
         }
     }
 }

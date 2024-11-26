@@ -44,8 +44,21 @@ namespace PatientRecordSystem.Util
         public List<User> Users ()
         {
             string jsonPath = Environment.CurrentDirectory + @"\Data\users.json";
-            string jsonText = File.ReadAllText(jsonPath);
-            return JsonSerializer.Deserialize<List<User>>(jsonText);
+
+            if (File.Exists(jsonPath))
+            {
+                string jsonString = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<User>>(jsonString);
+            }
+            else
+            {
+                File.Create(jsonPath).Dispose();
+                File.WriteAllText(jsonPath, "[]");
+                string jsonString = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<User>>(jsonString);
+            }
+
+
         }
 
         /// <summary>

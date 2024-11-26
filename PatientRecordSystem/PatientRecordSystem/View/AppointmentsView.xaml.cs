@@ -20,9 +20,31 @@ namespace PatientRecordSystem.View
     /// </summary>
     public partial class AppointmentsView : Page
     {
+
+
         public AppointmentsView()
         {
             InitializeComponent();
+            UpdatePage();
+        }
+
+        private void NewAppointment_Click (object sender, RoutedEventArgs e)
+        {
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal();
+            appointmentCreationModal.ShowDialog();
+
+            if (appointmentCreationModal.DialogResult == true)
+            {
+                NavigationService.Navigate(new AppointmentsView());
+            }
+        }
+
+
+
+        private void UpdatePage ()
+        {
+            ContentFrame.Navigate (new DoctorAppointmentView());
+            Title.Text = "Appointment Manager";
         }
     }
 }

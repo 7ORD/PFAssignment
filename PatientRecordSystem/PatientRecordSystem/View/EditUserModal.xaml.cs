@@ -116,7 +116,7 @@ namespace PatientRecordSystem.View
             }
 
             // Update the User in the users list to equal the edited user.
-            users[users.FindIndex(u => u.Username == editingUser.Username)] = updatedUser;
+            users[users.FindIndex(u => u.Username.ToLower () == editingUser.Username.ToLower ())] = updatedUser;
 
             // Apply the edits to the json file and close this window.
             DialogResult = true;

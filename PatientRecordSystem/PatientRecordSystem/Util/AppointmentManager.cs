@@ -13,6 +13,11 @@ namespace PatientRecordSystem.Util
     {
         private static AppointmentManager instance;
 
+        private AppointmentManager ()
+        {
+            Appointments();
+        }
+
         public static AppointmentManager GetInstance ()
         {
             if (instance == null)
@@ -23,14 +28,25 @@ namespace PatientRecordSystem.Util
             return instance;
         }
 
-        private List<Appointment> Appointments()
+        public List<Appointment> Appointments()
         {
-            string jsonPath = Environment.CurrentDirectory + @"\Data\Appointments.json";
-            string jsonText = File.ReadAllText(jsonPath);
-            return JsonSerializer.Deserialize<List<Appointment>>(jsonText);
+            string jsonPath = Environment.CurrentDirectory + @"\Data\appointments.json";
+
+            if (File.Exists(jsonPath))
+            {
+                string jsonText = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<Appointment>>(jsonText);
+            }
+            else
+            { 
+                File.Create (jsonPath).Dispose ();
+                File.WriteAllText(jsonPath, "[]");
+                string jsonText = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<Appointment>>(jsonText);
+            }
         }
 
-        private void UpdateData (List<Appointment> appointments)
+        public void UpdateData (List<Appointment> appointments)
         {
             string jsonPath = Environment.CurrentDirectory + @"\Data\Appointments.json";
             string jsonString = JsonSerializer.Serialize(appointments);

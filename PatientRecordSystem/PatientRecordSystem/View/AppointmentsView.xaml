@@ -9,6 +9,30 @@
       Title="AppointmentsView">
 
     <Grid Margin="32">
-        <TextBlock Text="Appointments" />
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="18*"/>
+        </Grid.RowDefinitions>
+
+        
+        <Grid Grid.Row="0" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+        
+                <TextBlock Name="Title" Grid.Column="0" FontWeight="SemiBold" FontSize="22" Text="Appointment Manager" />
+
+                <Button Grid.Row="0" Grid.Column="3" Content="Create a new Appointment" Margin="4,0,0,6" Click="NewAppointment_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="White">
+
+            <Frame Name="ContentFrame" Grid.Column="1" Grid.Row="1" Source="PatientAppointmentView.xaml"/>
+        </Grid>
     </Grid>
 </Page>

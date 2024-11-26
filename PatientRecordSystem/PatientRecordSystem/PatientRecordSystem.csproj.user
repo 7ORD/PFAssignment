@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AppointmentCreationModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\AppointmentsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -54,6 +57,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\AppointmentCreationModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\AppointmentsView.xaml">
       <SubType>Designer</SubType>
     </Page>

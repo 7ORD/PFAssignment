@@ -13,6 +13,11 @@ namespace PatientRecordSystem.Util
     {
         private static AppointmentManager instance;
 
+        private AppointmentManager ()
+        {
+            Appointments();
+        }
+
         public static AppointmentManager GetInstance ()
         {
             if (instance == null)

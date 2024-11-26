@@ -5,6 +5,7 @@
     "FirstName": "Jane",
     "LastName": "Doe",
     "AccountType": 0,
+    "Appointments": [],
     "ResetFlag": true,
     "ResetRequestFlag": false,
     "Disabled": false
@@ -15,10 +16,7 @@
     "FirstName": "John",
     "LastName": "Doe",
     "AccountType": 1,
-    "Appointments": 
-    [
-        0
-    ],
+    "Appointments": [],
     "ResetFlag": true,
     "ResetRequestFlag": false,
     "Disabled": false
@@ -29,21 +27,8 @@
     "FirstName": "Foo",
     "LastName": "Bar",
     "AccountType": 2,
+    "Appointments": [],
     "ResetFlag": false,
-    "ResetRequestFlag": false,
-    "Disabled": false
-  },
-  {
-    "Username": "test@example.com",
-    "Password": "b1a5658d4bb398e5d3ed7f72a820f644",
-    "FirstName": "Test",
-    "LastName": "Doctor",
-    "AccountType": 1,
-    "Appointments": 
-    [
-        0
-    ],
-    "ResetFlag": true,
     "ResetRequestFlag": false,
     "Disabled": false
   }

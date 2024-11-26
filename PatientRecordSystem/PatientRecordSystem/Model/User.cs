@@ -40,9 +40,9 @@ namespace PatientRecordSystem.Model
 
             int hour = 8;
 
-            foreach (int i in Appointments)
+            for (int i = 0; i < Appointments.Count; i++)
             {
-                allAppointments.Add(AppointmentManager.GetInstance().Appointments().Where(a => a.AppointmentId == i).FirstOrDefault());
+                allAppointments.Add(AppointmentManager.GetInstance().Appointments().Where(a => a.AppointmentId == Appointments[i]).FirstOrDefault());
             }
 
             for (int i = 0; i < 16; i++)

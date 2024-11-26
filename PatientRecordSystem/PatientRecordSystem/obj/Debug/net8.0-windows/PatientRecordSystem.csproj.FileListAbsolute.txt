@@ -45,7 +45,6 @@ C:\Users\W10 LSTC 202\Desktop\PF Assignment\PatientRecordSystem\PatientRecordSys
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\ref\PatientRecordSystem.dll
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\Data\users.json
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.exe
-C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\Data\users.json
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.deps.json
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.runtimeconfig.json
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\bin\Debug\net8.0-windows\PatientRecordSystem.dll
@@ -147,3 +146,9 @@ C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\Pa
 C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientAppointmentView.g.cs
 C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DoctorAppointmentView.baml
 C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientAppointmentView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DoctorAppointmentView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientAppointmentView.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DoctorAppointmentView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientAppointmentView.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentCreationModal.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\AppointmentCreationModal.baml

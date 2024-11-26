@@ -40,9 +40,6 @@
     <Compile Update="View\PasswordResetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\PatientAppointmentView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\PatientRecordModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,9 +88,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\PasswordResetView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\PatientAppointmentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\PatientRecordModal.xaml">

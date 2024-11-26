@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -15,7 +16,6 @@ namespace PatientRecordSystem.Util
 
         private AppointmentManager ()
         {
-            Appointments();
         }
 
         public static AppointmentManager GetInstance ()
@@ -51,6 +51,40 @@ namespace PatientRecordSystem.Util
             string jsonPath = Environment.CurrentDirectory + @"\Data\Appointments.json";
             string jsonString = JsonSerializer.Serialize(appointments);
             File.WriteAllText(jsonPath, jsonString);
+        }
+
+        public bool IsAppointmentValid (Appointment appointment)
+        {
+            if (string.IsNullOrEmpty (appointment.PatientId)) {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty (appointment.Doctor))
+            {
+                return false;
+            }
+
+            if (appointment.Date == null)
+            {
+                return false;
+            }
+
+            if (appointment.Slot < 0 || appointment.Slot > 15)
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty (appointment.BriefDescription))
+            {
+                return false;
+            }
+            
+            if (string.IsNullOrEmpty(appointment.Description))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

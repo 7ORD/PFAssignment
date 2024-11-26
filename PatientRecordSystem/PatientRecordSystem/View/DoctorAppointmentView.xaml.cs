@@ -53,7 +53,13 @@ namespace PatientRecordSystem.View
         
         private void NewAppointment_Click (object sender, RoutedEventArgs e)
         {
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(date: DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), time: (SBSchedule.SelectedItem as Appointment).Time, slot: SBSchedule.SelectedIndex, doctor: currentDoctor.Username);
+            appointmentCreationModal.ShowDialog();
 
+            if (appointmentCreationModal.DialogResult == true)
+            {
+                NavigationService.Navigate(new DoctorAppointmentView ());
+            }
         }
 
         private void AppointmentDetails_Click (object sender, RoutedEventArgs e)

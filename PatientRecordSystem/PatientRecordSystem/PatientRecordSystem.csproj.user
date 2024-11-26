@@ -19,6 +19,9 @@
     <Compile Update="View\DoctorAppointmentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\DoctorSelectionModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\EditUserModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,7 +49,13 @@
     <Compile Update="View\PatientRegistrationModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\PatientSelectionModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\PatientsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SlotSelectionModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserManagementView.xaml.cs">
@@ -64,6 +73,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\DoctorAppointmentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DoctorSelectionModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\EditUserModal.xaml">
@@ -93,7 +105,13 @@
     <Page Update="View\PatientRecordModal.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\PatientSelectionModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\PatientsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SlotSelectionModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserManagementView.xaml">

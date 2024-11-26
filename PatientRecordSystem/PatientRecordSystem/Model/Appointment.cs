@@ -47,7 +47,7 @@ namespace PatientRecordSystem.Model
         {
             get
             {
-                if (Slot > 0)
+                if (Slot >= 0)
                 {
                     return true;
                 } else

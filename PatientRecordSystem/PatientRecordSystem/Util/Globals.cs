@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PatientRecordSystem.Model;
+using PatientRecordSystem.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +25,11 @@ namespace PatientRecordSystem.Util
             Valid,
             Invalid
         }
+
+        public static Patient newAppointmentPatient;
+        public static User newAppointmentDoctor;
+        public static DateOnly newAppointmentDate;
+        public static TimeOnly newAppointmentTime;
+        public static int newAppointmentSlot;
     }
 }

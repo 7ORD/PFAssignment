@@ -1,0 +1,47 @@
+﻿<Window x:Class="PatientRecordSystem.View.SlotSelectionModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PatientRecordSystem.View"
+        mc:Ignorable="d"
+        Title="Time Slot Selection" Height="650" Width="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="20*"/>
+
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Select an Appointment time" FontSize="16" FontWeight="DemiBold" TextAlignment="Center" VerticalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Margin="8">
+            <TextBlock Text="Select A Date" />
+            <DatePicker Name="DatePicker" Margin="0 6 0 0" Padding="4" SelectedDateChanged="Validate"/>
+        </StackPanel>
+        
+        <DataGrid Name="SlotTable" Grid.Row="2" Margin="8" ItemsSource="{Binding}" ColumnHeaderHeight="32" RowHeight="32" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Slot" Width="2*" Binding="{Binding Time}"/>
+                <DataGridTextColumn Header="Details" Width="10*" Binding="{Binding AppointmentDetails}"/>
+                <DataGridTemplateColumn Header="Select" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0"  Content="Unavailable" BorderThickness="0 0 1 0" IsEnabled="False" />
+                                <Button Grid.Column="0"  Content="Select" BorderThickness="0 0 1 0" Visibility="{Binding Populated, Converter={StaticResource BoolVisibilityConverter}}" Click="Select_Click"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

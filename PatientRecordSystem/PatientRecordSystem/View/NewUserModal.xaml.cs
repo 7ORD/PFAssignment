@@ -59,6 +59,7 @@ namespace PatientRecordSystem.View
             user.AccountType = (User.UserAccountType)AccountType.SelectedIndex;
             user.Password = UserManager.Hash("Example123");
             user.ResetFlag = true;
+            user.Appointments = new List<int>(0);
 
             // If the user is valid, enable the Create User button, else keep it disabled
             if (UserManager.GetInstance().IsUserValid (user))

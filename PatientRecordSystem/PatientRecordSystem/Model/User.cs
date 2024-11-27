@@ -31,7 +31,12 @@ namespace PatientRecordSystem.Model
         public bool ResetRequestFlag { get; set; }
         public bool Disabled { get; set; }
 
-
+        [JsonIgnore]
+        public string ParsedName
+        {
+            get => new string($"{FirstName} {LastName}");
+            private set { }
+        } 
 
         public List<Appointment> AppointmentsToday (DateOnly date)
         {

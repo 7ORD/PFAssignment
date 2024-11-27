@@ -29,11 +29,19 @@ namespace PatientRecordSystem.View
         private List<Appointment> appointments;
         private bool Visible;
 
-        public DoctorAppointmentView()
+        public DoctorAppointmentView(bool visible = false)
         {
             InitializeComponent();
             DoctorTable.DataContext = Doctors;
             currentDoctor = new User();
+
+            SBDatePicker.SelectedDate = DateTime.Today;
+
+            Visible = visible;
+
+            currentDoctor = Globals.appointmentViewDoctor;
+            Globals.appointmentViewDoctor = new User();
+
             UpdateSchedule();
         }
 
@@ -53,12 +61,27 @@ namespace PatientRecordSystem.View
         
         private void NewAppointment_Click (object sender, RoutedEventArgs e)
         {
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(date: DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), time: (SBSchedule.SelectedItem as Appointment).Time, slot: SBSchedule.SelectedIndex, doctor: currentDoctor.Username);
+            Globals.appointmentViewDoctor = currentDoctor;
+            appointmentCreationModal.ShowDialog();
 
+            if (appointmentCreationModal.DialogResult == true)
+            {
+                UpdateSchedule();
+                NavigationService.Navigate(new DoctorAppointmentView(true));
+            }
         }
 
         private void AppointmentDetails_Click (object sender, RoutedEventArgs e)
         {
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(true, DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), (SBSchedule.SelectedItem as Appointment).Time, SBSchedule.SelectedIndex, currentDoctor.Username, (SBSchedule.SelectedItem as Appointment).PatientId, (SBSchedule.SelectedItem as Appointment).BriefDescription, (SBSchedule.SelectedItem as Appointment).Description);
+            Globals.appointmentViewDoctor = currentDoctor;
+            appointmentCreationModal.ShowDialog();
 
+            if (appointmentCreationModal.DialogResult == true)
+            {
+                NavigationService.Navigate(new DoctorAppointmentView(true));
+            }
         }
 
         private void Date_Changed (object sender, RoutedEventArgs e)

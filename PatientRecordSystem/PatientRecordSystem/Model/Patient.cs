@@ -33,6 +33,13 @@ namespace PatientRecordSystem.Model
             private set { }
         }
 
+        [JsonIgnore]
+        public string ParsedName
+        {
+            get => new string($"{FirstName} {LastName}");
+            private set { }
+        }
+
         public Patient ()
         {
             Id = 0;
@@ -43,6 +50,7 @@ namespace PatientRecordSystem.Model
             ContactNumber = "";
             NHSNumber = "";
             Address = new Address("", "", "", "");
+            Appointments = new List<int>();
         }
     }
 }

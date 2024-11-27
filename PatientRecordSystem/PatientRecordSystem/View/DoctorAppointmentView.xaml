@@ -22,8 +22,7 @@
         <DataGrid Name="DoctorTable" Grid.ColumnSpan="1" Grid.Row="1" RowHeight="32" ColumnHeaderHeight="32" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Grid.RowSpan="3">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Width="3*"  Header="First Name" Binding="{ Binding FirstName }"/>
-                <DataGridTextColumn Width="3*"  Header="Last Name" Binding="{ Binding LastName }"/>
+                <DataGridTextColumn Width="3*"  Header="Doctor's Name" Binding="{ Binding ParsedName }"/>
                 <DataGridTextColumn Width="4*"/>
                 <DataGridTemplateColumn Header="Action" Width="3*">
                     <DataGridTemplateColumn.CellTemplate>

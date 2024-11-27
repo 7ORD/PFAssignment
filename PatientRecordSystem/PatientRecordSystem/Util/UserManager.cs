@@ -128,6 +128,7 @@ namespace PatientRecordSystem.Util
 
             UpdateData(users);
         }
+
         /// <summary>
         /// Validates a user's username and password against the values stored in the database
         /// </summary>

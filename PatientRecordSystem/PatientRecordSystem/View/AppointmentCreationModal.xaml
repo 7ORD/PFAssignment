@@ -31,7 +31,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBox Name="Patient" Text="No Patient Selected" IsEnabled="False" Grid.Column="0" Padding="6" Margin="0 0 4 0" TextChanged="Validate"/>
-                <Button Grid.Column="1" Margin="4 0 0 0" Content="Select a Patient" Click="SelectPatient_Click" />
+                <Button Name="SelectPatientButton" Grid.Column="1" Margin="4 0 0 0" Content="Select a Patient" Click="SelectPatient_Click" />
             </Grid>
         </StackPanel>
 
@@ -44,7 +44,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBox Name="Doctor" Text="No Doctor Selected" IsEnabled="False" Grid.Column="0" Padding="6" Margin="0 0 4 0" TextChanged="Validate"/>
-                <Button Grid.Column="1" Margin="4 0 0 0" Content="Select a Doctor" Click="SelectDoctor_Click"/>
+                <Button Name="SelectDoctorButton" Grid.Column="1" Margin="4 0 0 0" Content="Select a Doctor" Click="SelectDoctor_Click"/>
             </Grid>
         </StackPanel>
 

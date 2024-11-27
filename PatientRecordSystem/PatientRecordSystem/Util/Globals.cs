@@ -31,5 +31,7 @@ namespace PatientRecordSystem.Util
         public static DateOnly newAppointmentDate;
         public static TimeOnly newAppointmentTime;
         public static int newAppointmentSlot;
+
+        public static User appointmentViewDoctor;
     }
 }

@@ -24,9 +24,10 @@ namespace PatientRecordSystem.View
     public partial class AppointmentCreationModal : Window
     {
         private Appointment newAppointment = new Appointment();
-        private bool loaded = false;
 
-        public AppointmentCreationModal(DateOnly date = new DateOnly (), TimeOnly time = new TimeOnly (), int slot = -1, string doctor = "")
+        private bool ReadOnly = false;
+
+        public AppointmentCreationModal(bool readOnly = false, DateOnly date = new DateOnly (), TimeOnly time = new TimeOnly (), int slot = -1, string doctor = "", string patient = "", string summary = "", string description = "")
         {
             InitializeComponent();
 
@@ -42,6 +43,39 @@ namespace PatientRecordSystem.View
             {
                 Doctor.Text = UserManager.GetInstance().Users().Find(u => u.Username == doctor).ParsedName;
                 newAppointment.Doctor = doctor;
+            }
+
+            if (!string.IsNullOrEmpty (patient))
+            {
+                Patient.Text = PatientManager.GetInstance().Patients().Find(p => p.HospitalNumber == patient).ParsedName;
+                newAppointment.PatientId = patient;
+            }
+
+            if (!string.IsNullOrEmpty (summary))
+            {
+                Summary.Text = summary;
+                newAppointment.BriefDescription = summary;
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                Description.Text = description;
+                newAppointment.Description = description;
+            }
+
+            if (readOnly)
+            {
+                Description.IsEnabled = false;
+                Summary.IsEnabled = false;
+                SelectDateButton.IsEnabled = false;
+                SelectDoctorButton.IsEnabled = false;
+                SelectPatientButton.IsEnabled = false;
+                ReadOnly = readOnly;
+
+                Submit.Visibility = Visibility.Hidden;
+                Grid.SetColumn(Cancel, 0);
+                Grid.SetColumnSpan(Cancel, 2);
+                Title.Text = $"Appointment for {Patient.Text = PatientManager.GetInstance().Patients().Find(p => p.HospitalNumber == patient).ParsedName}";
             }
         }
 
@@ -118,7 +152,6 @@ namespace PatientRecordSystem.View
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-
             List<Appointment> appointments = AppointmentManager.GetInstance().Appointments();
             List<User> users = UserManager.GetInstance().Users();
 
@@ -128,10 +161,10 @@ namespace PatientRecordSystem.View
             AppointmentManager.GetInstance().UpdateData(appointments);
             UserManager.GetInstance().UpdateData(users);
 
-
-
             NotificationWindow notification = new NotificationWindow("Appointment Scheduled", "A new appointment has been entered in the system.");
             notification.ShowDialog();
+
+            Globals.appointmentViewDoctor = users.Find(u => u.Username == newAppointment.Doctor);
 
             DialogResult = true;
             Close();

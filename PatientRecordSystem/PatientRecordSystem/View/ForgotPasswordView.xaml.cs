@@ -33,7 +33,7 @@ namespace PatientRecordSystem.View
         {
             List<User> users = UserManager.GetInstance().Users();
 
-            User user = users.Find(u => u.Username == UsernameInput.Text);
+            User user = users.Find(u => u.Username == UsernameInput.Text.ToLower ());
 
             if (user != null)
             {

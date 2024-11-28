@@ -162,3 +162,5 @@ C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSys
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\DoctorSelectionModal.baml
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientSelectionModal.baml
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\SlotSelectionModal.baml
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientArchiveModal.g.cs
+C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\obj\Debug\net8.0-windows\View\PatientArchiveModal.baml

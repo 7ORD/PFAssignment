@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\W10 LSTC 202\Desktop\PF Assignment\patientrecordsystem\PatientRecordSystem\PatientRecordSystem\App.xaml
-19992098158
+201005758680
 
-31277682777
+321106477441
 198-556154604
-View\AppointmentCreationModal.xaml;View\AppointmentsView.xaml;View\DashboardView.xaml;View\DoctorAppointmentView.xaml;View\DoctorSelectionModal.xaml;View\EditUserModal.xaml;View\ForgotPasswordView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainWindow.xaml;View\NewUserModal.xaml;View\NotificationWindow.xaml;View\PasswordResetView.xaml;View\PatientRecordModal.xaml;View\PatientRegistrationModal.xaml;View\PatientSelectionModal.xaml;View\PatientsView.xaml;View\SlotSelectionModal.xaml;View\UserManagementView.xaml;
+View\AppointmentCreationModal.xaml;View\AppointmentsView.xaml;View\DashboardView.xaml;View\DoctorAppointmentView.xaml;View\DoctorSelectionModal.xaml;View\EditUserModal.xaml;View\ForgotPasswordView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainWindow.xaml;View\NewUserModal.xaml;View\NotificationWindow.xaml;View\PasswordResetView.xaml;View\PatientArchiveModal.xaml;View\PatientRecordModal.xaml;View\PatientRegistrationModal.xaml;View\PatientSelectionModal.xaml;View\PatientsView.xaml;View\SlotSelectionModal.xaml;View\UserManagementView.xaml;
 
 False
 

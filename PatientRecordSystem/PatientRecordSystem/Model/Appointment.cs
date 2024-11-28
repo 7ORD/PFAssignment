@@ -1,6 +1,7 @@
 ﻿using PatientRecordSystem.Util;
 using System;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -40,14 +41,32 @@ namespace PatientRecordSystem.Model
         }
 
         [JsonIgnore]
-        public TimeOnly Time { get; set; }
+        public TimeOnly Time {
+            get 
+            {
+                int hour = 9;
+                int min = 0;
+
+                if (Slot % 2 != 0)
+                {
+                    hour += (Slot / 2);
+                    min = 30;
+                } else
+                {
+                    hour += (Slot / 2);
+                }
+
+                return new TimeOnly(hour, min);
+            }
+            set { }
+        }
 
         [JsonIgnore]
         public bool Populated
         {
             get
             {
-                if (Slot >= 0)
+                if (AppointmentId != -1)
                 {
                     return true;
                 } else

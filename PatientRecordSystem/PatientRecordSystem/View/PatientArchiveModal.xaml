@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PatientRecordSystem.View"
         mc:Ignorable="d"
-        Title="Patient Archive" Height="600" Width="800">
+        Title="Patient Archive" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -15,11 +17,12 @@
 
         <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" Text="Patient Archive" FontSize="17" FontWeight="DemiBold"/>
 
-        <DataGrid Name="ArchiveGrid" Grid.Row="1" Margin="8" Style="{ StaticResource Schedule }" ItemsSource="{ Binding }">
+        <DataGrid Name="ArchiveGrid" Grid.Row="1" Margin="8" Style="{ StaticResource Schedule }" ItemsSource="{ Binding }" BorderBrush="Black" BorderThickness="0.7">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{ Binding Date }" Width="2*"/>
                 <DataGridTextColumn Binding="{ Binding Time }" Width="2*"/>
                 <DataGridTextColumn Binding="{ Binding BriefDescription }" Width="10*"/>
+                <DataGridTextColumn Binding="{ Binding Status }" Width="3*"/>
                 <DataGridTemplateColumn Width="3*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

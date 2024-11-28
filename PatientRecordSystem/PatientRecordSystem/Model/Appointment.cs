@@ -11,6 +11,13 @@ namespace PatientRecordSystem.Model
 {
     public class Appointment
     {
+        public enum AppointmentStatus
+        {
+            Scheduled,
+            Completed,
+            Cancelled
+        }
+
         public int AppointmentId { get; set; }
         public string PatientId { get; set; }
         public string Doctor { get; set; }
@@ -18,7 +25,10 @@ namespace PatientRecordSystem.Model
         public int Slot { get; set; }
         public string BriefDescription { get; set; }
         public string Description { get; set; }
+        public string DoctorsNotes { get; set; }
         public string AppointmentCreator { get; set; }
+        public AppointmentStatus Status { get; set; }
+
 
 
         [JsonIgnore]

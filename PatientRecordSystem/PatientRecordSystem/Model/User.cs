@@ -43,7 +43,6 @@ namespace PatientRecordSystem.Model
             List<Appointment> allAppointments = new List<Appointment>();
             List<Appointment> todaysAppointments = new List<Appointment>();
 
-            int hour = 8;
 
             for (int i = 0; i < Appointments.Count; i++)
             {
@@ -53,6 +52,7 @@ namespace PatientRecordSystem.Model
             for (int i = 0; i < 16; i++)
             {
                 todaysAppointments.Add(new Appointment());
+                todaysAppointments[i].Slot = i;
 
                 for (int a = 0; a < allAppointments.Count; a++)
                 {
@@ -64,19 +64,6 @@ namespace PatientRecordSystem.Model
                         }
                     }
                 }
-
-                int minute = 0;
-
-                if (i % 2 != 0)
-                {
-                    minute = 30;
-                }
-                else
-                {
-                    hour++;
-                }
-
-                todaysAppointments[i].Time = new TimeOnly(hour, minute);
             }
 
             return todaysAppointments;

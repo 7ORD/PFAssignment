@@ -29,14 +29,20 @@ namespace PatientRecordSystem.View
         private List<Appointment> appointments;
         private bool Visible;
 
-        public DoctorAppointmentView(bool visible = false)
+        public DoctorAppointmentView(bool visible = false, DateTime date = new DateTime ())
         {
             InitializeComponent();
             DoctorTable.DataContext = Doctors;
             currentDoctor = new User();
 
-            SBDatePicker.SelectedDate = DateTime.Today;
-
+            if (!visible)
+            {
+                SBDatePicker.SelectedDate = DateTime.Today;
+            } else
+            {
+                SBDatePicker.SelectedDate = date;
+            }
+            
             Visible = visible;
 
             currentDoctor = Globals.appointmentViewDoctor;
@@ -68,7 +74,7 @@ namespace PatientRecordSystem.View
             if (appointmentCreationModal.DialogResult == true)
             {
                 UpdateSchedule();
-                NavigationService.Navigate(new DoctorAppointmentView(true));
+                NavigationService.Navigate(new DoctorAppointmentView(true, (DateTime)SBDatePicker.SelectedDate));
             }
         }
 
@@ -80,7 +86,7 @@ namespace PatientRecordSystem.View
 
             if (appointmentCreationModal.DialogResult == true)
             {
-                NavigationService.Navigate(new DoctorAppointmentView(true));
+                NavigationService.Navigate(new DoctorAppointmentView(true, (DateTime)SBDatePicker.SelectedDate));
             }
         }
 

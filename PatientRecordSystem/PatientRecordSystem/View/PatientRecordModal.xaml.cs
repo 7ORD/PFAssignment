@@ -12,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PatientRecordSystem.Model;
 using PatientRecordSystem.Util;
@@ -105,7 +106,15 @@ namespace PatientRecordSystem.View
             {
                 PopulateFields(editedPatient);
                 ToggleEditMode();
-                return;
+            } else
+            {
+                PatientArchiveModal patientArchiveModal = new PatientArchiveModal(currentPatient);
+                patientArchiveModal.ShowDialog();
+
+                if (patientArchiveModal.DialogResult == true)
+                {
+                    PopulateFields(currentPatient);
+                }
             }
         }
 
@@ -144,7 +153,6 @@ namespace PatientRecordSystem.View
                 RecordsButton.Content = "Discard Edits";
             } else
             {
-
                 editedPatient = new Patient();
                 EditButton.Content = "Edit Patient";
                 RecordsButton.Content = "View Records";

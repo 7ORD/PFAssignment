@@ -7,16 +7,20 @@ using System.Threading.Tasks;
 
 namespace PatientRecordSystem.Model
 {
+    /// <summary>
+    /// Address data model
+    /// </summary>
     public class Address
     {
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
         public string Town { get; set; }
         public string PostCode { get; set; }
-        public string ParsedAddress ()
-        {
-            return new string($"{FirstLine}, {SecondLine}, {Town}, {PostCode}");
-        }
+        
+        /// <summary>
+        /// Function which returns a bool dependant on whether the address is a valid address or not
+        /// </summary>
+        /// <returns></returns>
         public bool Parse ()
         {
             // Postcode Regex - Taken from the UK Government website as a standard for parsing UK Postcodes.
@@ -43,6 +47,13 @@ namespace PatientRecordSystem.Model
             return true;
         }
 
+        /// <summary>
+        /// Constructor which takes in 4 strings and sets the object's corresponding fields to the entered strings.
+        /// </summary>
+        /// <param name="firstLine">First line of the address</param>
+        /// <param name="secondLine">Second line of the address</param>
+        /// <param name="town">Town of the address</param>
+        /// <param name="postCode">Postcode of the address</param>
         public Address (string firstLine, string secondLine, string town, string postCode)
         {
             FirstLine = firstLine;

@@ -22,12 +22,14 @@ namespace PatientRecordSystem.View
     public partial class DashboardView : Page
     {
 
+        /// <summary>
+        /// Enum for the currently opened tab
+        /// </summary>
         private enum CurrentTab
         {
             Patients,
             Appointments,
-            UserManagement,
-            Account
+            UserManagement
         }
 
         SolidColorBrush selectedColor;
@@ -47,10 +49,12 @@ namespace PatientRecordSystem.View
             {
                 UserManagementButton.Visibility = Visibility.Hidden;
             }
-
-            SwitchTab(CurrentTab.Dashboard);
         }
 
+        /// <summary>
+        /// Method used to switch to tab 'tab'.
+        /// </summary>
+        /// <param name="tab"></param>
         private void SwitchTab (CurrentTab tab)
         {
             currentTab = tab;
@@ -75,6 +79,9 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Logs the current user out of the system and navigates back to the login screen
+        /// </summary>
         public void Logout_Click (object sender, RoutedEventArgs e)
         {
             UserManager.GetInstance().Logout();
@@ -82,16 +89,25 @@ namespace PatientRecordSystem.View
             NavigationService.Navigate(new LoginView());
         }
 
+        /// <summary>
+        /// Switches the current tab to the patients screen
+        /// </summary>
         public void Patients_Click(object sender, RoutedEventArgs e)
         {
             SwitchTab(CurrentTab.Patients);
             ContentFrame.Navigate(new PatientsView());
         }
+        /// <summary>
+        /// Switches the current tab to the appointments screen
+        /// </summary>
         public void Appointments_Click(object sender, RoutedEventArgs e)
         {
             SwitchTab(CurrentTab.Appointments);
             ContentFrame.Navigate(new AppointmentsView());
         }
+        /// <summary>
+        /// Switches the current tab to the user management screen
+        /// </summary>
         public void UserManagement_Click(object sender, RoutedEventArgs e)
         {
             SwitchTab(CurrentTab.UserManagement);

@@ -2,6 +2,7 @@
 using PatientRecordSystem.Util;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -26,14 +27,28 @@ namespace PatientRecordSystem.View
         private Appointment newAppointment = new Appointment();
         private string patientId;
         private bool ReadOnly = false;
-
+        /// <summary>
+        /// Constructor for the new appointment window
+        /// </summary>
+        /// <param name="readOnly">Is the form readonly?</param>
+        /// <param name="date">Prepopulated date</param>
+        /// <param name="time">Prepopulated time</param>
+        /// <param name="slot">Prepopulated slot</param>
+        /// <param name="doctor">Prepopulated doctor</param>
+        /// <param name="patient">Prepopulated patient</param>
+        /// <param name="summary">Prepopulated summary</param>
+        /// <param name="description">Prepopulated description</param>
+        /// <param name="editing">Is the form being edited?</param>
         public AppointmentCreationModal(bool readOnly = false, DateOnly date = new DateOnly(), TimeOnly time = new TimeOnly(), int slot = -1, string doctor = "", string patient = "", string summary = "", string description = "", bool editing = false)
         {
+            Trace.WriteLine(editing);
+
             InitializeComponent();
 
             ReadOnly = readOnly;
             patientId = patient;
 
+            // The following if statements will prepopulate the form dependant on whether data has been passed into the constructor.
             if (date != new DateOnly () && time != new TimeOnly () && slot > -1)
             {
                 AppointmentTime.Text = $"{date} - {time}";
@@ -83,29 +98,62 @@ namespace PatientRecordSystem.View
                 Title.Text = $"Appointment for {Patient.Text = PatientManager.GetInstance().Patients().Find(p => p.HospitalNumber == patient).ParsedName}";
             }
 
+            // Checks if the form is editing, and if so, let the user edit the AppointmentStatus and DoctorNotes
             if (!editing)
             {
                 AppointmentStatus.IsEnabled = false;
+
+
+                SelectDoctorButton.IsEnabled = false;
+                SelectPatientButton.IsEnabled = false;
             } else
             {
                 AppointmentStatus.IsEnabled = true;
                 DoctorNotes.IsEnabled = true;
                 ReadOnly = false;
+                if (UserManager.GetInstance().currentUser.AccountType != User.UserAccountType.Doctor)
+                {
+                    SelectDoctorButton.IsEnabled = true;
+                    SelectPatientButton.IsEnabled = true;
+                }
             }
 
+            // If the user isn't of type Doctor - Don't let them edit the doctor's notes
             if (UserManager.GetInstance().currentUser.AccountType != User.UserAccountType.Doctor)
             {
                 DoctorNotes.IsEnabled = false;
             }
 
+            // If the user is of type Admin, hide the doctor's notes and appointment description, otherwise, show it.
+            if (UserManager.GetInstance ().currentUser.AccountType == User.UserAccountType.Admin)
+            {
+
+                DescriptionLabel.Visibility = Visibility.Collapsed;
+                Description.Visibility = Visibility.Collapsed;
+                DoctorNotesLabel.Visibility = Visibility.Collapsed;
+                DoctorNotes.Visibility = Visibility.Collapsed;
+            } else
+            {
+                DescriptionLabel.Visibility = Visibility.Visible;
+                Description.Visibility = Visibility.Visible;
+                DoctorNotesLabel.Visibility = Visibility.Visible;
+                DoctorNotes.Visibility = Visibility.Visible;
+            }
+
             AppointmentStatus.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Opens a new dialog window of type DoctorSelectionModal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectDoctor_Click (object sender, RoutedEventArgs e)
         {
             DoctorSelectionModal doctorSelectionModal = new DoctorSelectionModal();
             doctorSelectionModal.ShowDialog();
 
+            // When window closes, populate the form with the selected doctor.
             if (doctorSelectionModal.DialogResult == true)
             {
                 Doctor.Text = Globals.newAppointmentDoctor.ParsedName;
@@ -119,11 +167,17 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Opens a new dialog window of type PatientSelectionModal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectPatient_Click(object sender, RoutedEventArgs e)
         {
             PatientSelectionModal patientSelectionModal = new PatientSelectionModal();
             patientSelectionModal.ShowDialog();
 
+            // When window closes, populate the form with the selected patient.
             if (patientSelectionModal.DialogResult == true)
             {
                 Patient.Text = Globals.newAppointmentPatient.ParsedName;
@@ -132,11 +186,13 @@ namespace PatientRecordSystem.View
             }
         }
 
+        // Opens a new dialog window of type SlotSelectionModal
         private void SelectSlot_Click (object sender, RoutedEventArgs e)
         {
             SlotSelectionModal slotSelectionModal = new SlotSelectionModal();
             slotSelectionModal.ShowDialog();
-            
+
+            // When window closes, populate the form with the selected timeslot.
             if (slotSelectionModal.DialogResult == true)
             {
                 AppointmentTime.Text = $"{Globals.newAppointmentDate} - {Globals.newAppointmentTime}";
@@ -147,6 +203,9 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Validates data entered into the form with the AppointmentManager.IsAppointmentValid method.
+        /// </summary>
         private void Validate (object sender, RoutedEventArgs e)
         {
 
@@ -164,12 +223,19 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Closes the window
+        /// </summary>
+
         private void Cancel_Click (object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
             this.Close();
         }
 
+        /// <summary>
+        /// Creates a new appointment, saves it into the appointments.json file, and adds the appointment ID to the doctor's user file in users.json
+        /// </summary>
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             List<Appointment> appointments = AppointmentManager.GetInstance().Appointments();
@@ -190,6 +256,9 @@ namespace PatientRecordSystem.View
             Close();
         }
 
+        /// <summary>
+        /// Updates the newAppointment property with the form's data
+        /// </summary>
         private void UpdateAppointmentDetails ()
         {
             newAppointment.AppointmentId = AppointmentManager.GetInstance().Appointments().Count;
@@ -205,23 +274,6 @@ namespace PatientRecordSystem.View
             }
             
             newAppointment.AppointmentCreator = UserManager.GetInstance().currentUser.Username;
-        }
-
-        private void PopulateForm ()
-        {
-            Description.IsEnabled = false;
-            Summary.IsEnabled = false;
-            SelectDateButton.IsEnabled = false;
-            SelectDoctorButton.IsEnabled = false;
-            SelectPatientButton.IsEnabled = false;
-
-            DoctorNotes.IsEnabled = false;
-            AppointmentStatus.IsEnabled = false;
-
-            Submit.Visibility = Visibility.Hidden;
-            Grid.SetColumn(Cancel, 0);
-            Grid.SetColumnSpan(Cancel, 2);
-            Title.Text = $"Appointment for {Patient.Text = PatientManager.GetInstance().Patients().Find(p => p.HospitalNumber == patientId).ParsedName}";
         }
     }
 }

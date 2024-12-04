@@ -29,6 +29,9 @@ namespace PatientRecordSystem.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Sets the 'ResetRequestFlag' to true if the username entered is found in the database, and updates users.json
+        /// </summary>
         private void Request_Click (object sender, RoutedEventArgs e)
         {
             List<User> users = UserManager.GetInstance().Users();
@@ -41,10 +44,12 @@ namespace PatientRecordSystem.View
                 UserManager.GetInstance().UpdateData(users);
             }
 
+            // Opens a notification informing the user that their request has been sent.
             NotificationWindow notificationWindow = new NotificationWindow("Forgot Password", "If the entered user exists, a password\nreset request will be sent to the system admin.");
 
             notificationWindow.ShowDialog();
 
+            // Go back to the login screen when dialog has closed.
             if (notificationWindow.DialogResult == true)
             {
                 NavigationService.GoBack();
@@ -52,6 +57,7 @@ namespace PatientRecordSystem.View
             
         }
 
+        // Go back to the login screen.
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

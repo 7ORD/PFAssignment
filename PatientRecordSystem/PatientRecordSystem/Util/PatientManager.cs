@@ -11,6 +11,9 @@ using PatientRecordSystem.Model;
 
 namespace PatientRecordSystem.Util
 {
+    /// <summary>
+    /// PatientManager utility class - Handles all patient operations
+    /// </summary>
     public sealed class PatientManager
     {
 
@@ -32,6 +35,10 @@ namespace PatientRecordSystem.Util
             return instance;
         }
 
+        /// <summary>
+        /// Deserializes the patients.json file and casts it into a new List of type Patient
+        /// </summary>
+        /// <returns>Returns a new List of type Patient populated from the patients.json file</returns>
         public List<Patient> Patients ()
         {
             string jsonPath = Environment.CurrentDirectory + @"\Data\patients.json";
@@ -49,6 +56,10 @@ namespace PatientRecordSystem.Util
             }
         }
 
+        /// <summary>
+        /// Serializes a List of type Patient into json format and writes the result to the patients.json file
+        /// </summary>
+        /// <param name="patients">The list of type Patient to write to the json file</param>
         public void UpdateData (List<Patient> patients)
         {
             string jsonPath = Environment.CurrentDirectory + @"\Data\patients.json";
@@ -56,6 +67,11 @@ namespace PatientRecordSystem.Util
             File.WriteAllText(jsonPath, jsonString);
         }
 
+        /// <summary>
+        /// Validation method for patients
+        /// </summary>
+        /// <param name="patient">The Patient to validate</param>
+        /// <returns>Returns a boolean dependant on whether the patient is valid or not</returns>
         public bool IsPatientValid (Patient patient)
         {
             // Checks if Patient patient is assigned a value.

@@ -24,6 +24,12 @@ namespace PatientRecordSystem.View
 
         public string Header;
         public string Message;
+        
+        /// <summary>
+        /// Sets the header and message of the notification window to strings 'header' and 'message'
+        /// </summary>
+        /// <param name="header">The title of the notification window</param>
+        /// <param name="message">The message to display in the notification window</param>
         public NotificationWindow(string header, string message)
         {
             InitializeComponent();
@@ -34,6 +40,9 @@ namespace PatientRecordSystem.View
             HeaderText.Text = Header;
             ContentText.Text = Message;
         }
+        /// <summary>
+        /// Closes the notification window
+        /// </summary>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;

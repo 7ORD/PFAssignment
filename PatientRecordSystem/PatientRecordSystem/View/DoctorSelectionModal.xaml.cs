@@ -24,9 +24,11 @@ namespace PatientRecordSystem.View
         public DoctorSelectionModal()
         {
             InitializeComponent();
+            // Set the datacontext for the DataTable.
             DoctorTable.DataContext = UserManager.GetInstance().Users().Where(u => u.AccountType == Model.User.UserAccountType.Doctor).ToList();
         }
 
+        // Set the Global parameter to the selected doctor, and close the dialog box.
         private void Select_Click (object sender, RoutedEventArgs e)
         {
             Globals.newAppointmentDoctor = DoctorTable.SelectedItem as User;

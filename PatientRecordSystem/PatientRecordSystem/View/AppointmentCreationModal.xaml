@@ -70,12 +70,12 @@
             </StackPanel>
 
             <StackPanel Grid.Row="5" Margin="8">
-                <TextBlock Text="Appointment Description" />
+                <TextBlock Name="DescriptionLabel"  Text="Appointment Description" />
                 <TextBox Name="Description" Padding="6" Height="100" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="0 6 0 0" TextChanged="Validate"/>
             </StackPanel>
             
             <StackPanel Grid.Row="6" Margin="8">
-                <TextBlock Text="Doctor's Notes" />
+                <TextBlock Name="DoctorNotesLabel" Text="Doctor's Notes" />
                 <TextBox Name="DoctorNotes" Padding="6" Height="100" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="0 6 0 0" TextChanged="Validate"/>
             </StackPanel>
 

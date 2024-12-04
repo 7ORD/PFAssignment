@@ -21,6 +21,9 @@ namespace PatientRecordSystem.View
         public MainWindow()
         {
             InitializeComponent();
+            this.MinHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            this.MinWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
     }
 }

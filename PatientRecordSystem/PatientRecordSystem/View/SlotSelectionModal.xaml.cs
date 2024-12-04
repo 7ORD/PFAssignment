@@ -28,6 +28,11 @@ namespace PatientRecordSystem.View
             UpdateTable();
         }
 
+        /// <summary>
+        /// Sets the global newAppointment parameters to the selected time, slot and date.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Select_Click(object sender, RoutedEventArgs e)
         {
             Globals.newAppointmentDate = DateOnly.FromDateTime((DateTime)DatePicker.SelectedDate);
@@ -38,11 +43,17 @@ namespace PatientRecordSystem.View
             this.Close();
         }
         
+        /// <summary>
+        /// Validates data in the form
+        /// </summary>
         private void Validate (object sender, RoutedEventArgs e)
         {
             UpdateTable();
         }
 
+        /// <summary>
+        /// Updates the table with the doctor's appointments on the selected date.
+        /// </summary>
         private void UpdateTable ()
         {
             SlotTable.DataContext = Globals.newAppointmentDoctor.AppointmentsToday(DateOnly.FromDateTime((DateTime)DatePicker.SelectedDate));

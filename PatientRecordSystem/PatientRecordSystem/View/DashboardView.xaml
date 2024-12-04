@@ -24,7 +24,6 @@
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="16 0">
                     <TextBlock Name="UserLabel" Text="Logged in as: USER" VerticalAlignment="Center" Padding="16 0"/>
-                    <Button Height="128" Padding="16 0" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Account Management"/>
                     <Button Click="Logout_Click" HorizontalAlignment="Right" Height="128" Padding="16 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Log out"/>
                 </StackPanel>
             </DockPanel>

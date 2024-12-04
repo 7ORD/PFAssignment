@@ -33,8 +33,12 @@ namespace PatientRecordSystem.View
         {
             InitializeComponent();
 
+            // Sets the DataGrid's DataContext to show all users who's accounts are not disabled.
             UserTable.DataContext = UserManager.GetInstance().Users().Where(u => !u.Disabled);
         }
+        /// <summary>
+        /// Opens an EditUserModal dialog window with the selected user as a parameter.
+        /// </summary>
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
@@ -46,6 +50,10 @@ namespace PatientRecordSystem.View
                 NavigationService.Navigate (new UserManagementView ());
             }
         }
+
+        /// <summary>
+        /// Reset the selected user's password and open a new notification window to inform the user.
+        /// </summary>
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
             User user = UserTable.SelectedItem as User;
@@ -60,6 +68,10 @@ namespace PatientRecordSystem.View
                 NavigationService.Navigate(new UserManagementView());
             }
         }
+
+        /// <summary>
+        /// Opens a new NewUserModal window.
+        /// </summary>
         private void NewUser_Click(object sender, RoutedEventArgs e)
         {
             NewUserModal newUserModal = new NewUserModal();
@@ -71,6 +83,9 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Toggles views between disabled accounts, and enabled accounts.
+        /// </summary>
         private void ShowDisabled_Click (object sender, RoutedEventArgs e)
         {
             if (disabledView)
@@ -85,10 +100,12 @@ namespace PatientRecordSystem.View
                 ShowDisabledButton.Content = "Show Active Users";
             }
 
+            // Refresh the page
             NavigationService.Navigate(this);
         }
 
         /// <summary>
+        /// Toggles the selected user's Disabled field and updates the users.json file. Shows a notification informing the user of this, then refreshes the page.
         /// </summary>
         private void Enable_Click (object sender, RoutedEventArgs e)
         {
@@ -112,6 +129,10 @@ namespace PatientRecordSystem.View
                 NavigationService.Navigate(new UserManagementView ());
             }
         }
+
+        /// <summary>
+        /// Deletes the selected user from the users.json file, shows a notifcation informing the user of this, then refreshes the page.
+        /// </summary>
 
         private void Delete_Click (object sender, RoutedEventArgs e)
         {

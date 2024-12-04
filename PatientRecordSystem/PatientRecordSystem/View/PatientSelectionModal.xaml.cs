@@ -24,9 +24,13 @@ namespace PatientRecordSystem.View
         public PatientSelectionModal()
         {
             InitializeComponent();
+            // Sets the DataGrid DataContext.
             PatientTable.DataContext = PatientManager.GetInstance().Patients();
         }
 
+        /// <summary>
+        /// Sets the global parameter newAppointmentPatient to the selected Patient.
+        /// </summary>
         private void Select_Click (object sender, RoutedEventArgs e)
         {
             Globals.newAppointmentPatient = PatientTable.SelectedItem as Patient;

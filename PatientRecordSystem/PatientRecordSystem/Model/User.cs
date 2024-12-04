@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 
 namespace PatientRecordSystem.Model
 {
-    [Serializable]
+    /// <summary>
+    /// User data model
+    /// </summary>
     public class User
     {
         public enum UserAccountType
@@ -31,13 +33,21 @@ namespace PatientRecordSystem.Model
         public bool ResetRequestFlag { get; set; }
         public bool Disabled { get; set; }
 
+        /// <summary>
+        /// Returns the user's name in the format of 'FirstName LastName'
+        /// </summary>
         [JsonIgnore]
         public string ParsedName
         {
             get => new string($"{FirstName} {LastName}");
             private set { }
-        } 
+        }
 
+        /// <summary>
+        /// Checks through all of the stored appointments, and grabs the ones assigned to this user on the given date.
+        /// </summary>
+        /// <param name="date">The date on which to check for appointments</param>
+        /// <returns>Returns a List of 16 appointments for the date passed into the method, sorted by slot</returns>
         public List<Appointment> AppointmentsToday (DateOnly date)
         {
             List<Appointment> allAppointments = new List<Appointment>();

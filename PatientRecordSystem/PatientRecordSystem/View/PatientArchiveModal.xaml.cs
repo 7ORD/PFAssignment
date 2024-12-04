@@ -24,26 +24,31 @@ namespace PatientRecordSystem.View
     { 
         private List<Appointment> appointments;
 
+        /// <summary />
+        /// <param name="patient">The patient who's appointments are being displayed</param>
         public PatientArchiveModal(Patient patient)
         {
             InitializeComponent();
 
+            // Get all appointments assigned to this patient, and add them to a list.
             appointments = AppointmentManager.GetInstance().Appointments().Where(a => a.PatientId == patient.HospitalNumber).ToList();
 
+            // Sets the DataGrid's DataContext
             ArchiveGrid.DataContext = appointments;
-
-            foreach (Appointment a in appointments)
-            {
-                Trace.WriteLine(a.Time);
-            }
         }
 
+        /// <summary>
+        /// Opens a readonly AppointmentCreationModal dialog.
+        /// </summary>
         private void AppointmentDetails_Click(object sender, RoutedEventArgs e)
         {
             AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(true, ((Appointment)ArchiveGrid.SelectedItem).Date, ((Appointment)ArchiveGrid.SelectedItem).Time, ArchiveGrid.SelectedIndex, ((Appointment)ArchiveGrid.SelectedItem).Doctor, ((Appointment)ArchiveGrid.SelectedItem).PatientId, ((Appointment)ArchiveGrid.SelectedItem).BriefDescription, ((Appointment)ArchiveGrid.SelectedItem).Description);
             appointmentCreationModal.ShowDialog();
         }
 
+        /// <summary>
+        /// Closes the window.
+        /// </summary>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;

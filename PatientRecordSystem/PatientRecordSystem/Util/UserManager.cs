@@ -10,6 +10,9 @@ using System.Text.RegularExpressions;
 
 namespace PatientRecordSystem.Util
 {
+    /// <summary>
+    /// UserManager utility class - Handles all user operations
+    /// </summary>
     public sealed class UserManager
     {
 

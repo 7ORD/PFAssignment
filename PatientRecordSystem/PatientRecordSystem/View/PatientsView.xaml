@@ -23,7 +23,7 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" FontSize="22" Text="Patient Management" />
         <TextBlock Grid.Column="1" Text="Patient Search" VerticalAlignment="Center" Margin="4 0 16 6" HorizontalAlignment="Right"/>
-        <TextBox Name="SearchBar" Grid.Column="2" Margin="4,0,0,6"  VerticalContentAlignment="Center" Padding="8 0" ToolTip="Enter any information relating to a patient to update the table"/>
+        <TextBox Name="SearchBar" Grid.Column="2" Margin="4,0,0,6"  VerticalContentAlignment="Center" Padding="8 0" KeyUp="SearchBar_KeyUp" ToolTip="Enter any information relating to a patient to update the table"/>
         <Button Name ="RegisterButton" Grid.Row="0" Grid.Column="3" Content="Register new Patient" Margin="4,0,0,6" Click="Registration_Click"/>
 
         <DataGrid Name="PatientTable" Grid.ColumnSpan="4" Grid.Row="1" RowHeight="32" ColumnHeaderHeight="32" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="0,19,0,0" Grid.RowSpan="3">

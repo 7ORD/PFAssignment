@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace PatientRecordSystem.Model
 {
+    /// <summary>
+    /// Appointment data model - Contains a constructor which contains some default values.
+    /// </summary>
     public class Appointment
     {
         public enum AppointmentStatus
@@ -30,7 +33,11 @@ namespace PatientRecordSystem.Model
         public AppointmentStatus Status { get; set; }
 
 
-
+        /// <summary>
+        /// Returns a string used when showing an appointment schedule - If the appointment has no details
+        /// assigned, then it will return "Free", otherwise, return the patient's full name and the summary
+        /// of their appointment
+        /// </summary>
         [JsonIgnore]
         public string AppointmentDetails
         {
@@ -50,6 +57,10 @@ namespace PatientRecordSystem.Model
             set { }
         }
 
+        /// <summary>
+        /// Converts the slot int into a TimeOnly struct. Checks if the slot is odd, if it is, the
+        /// minutes are set to 30. Increases the hour by Slot/2.
+        /// </summary>
         [JsonIgnore]
         public TimeOnly Time {
             get 
@@ -71,6 +82,9 @@ namespace PatientRecordSystem.Model
             set { }
         }
 
+        /// <summary>
+        /// Checks if the appointment slot is populated - Used in the DoctorAppointmentView.xaml file to determine which button to show.
+        /// </summary>
         [JsonIgnore]
         public bool Populated
         {
@@ -79,13 +93,18 @@ namespace PatientRecordSystem.Model
                 if (AppointmentId != -1)
                 {
                     return true;
-                } else
+                }
+                else
                 {
                     return false;
                 }
             }
             set { }
         }
+
+        /// <summary>
+        /// Constructor which sets some default values when creating a new appointment
+        /// </summary>
         public Appointment ()
         {
             AppointmentId = -1;

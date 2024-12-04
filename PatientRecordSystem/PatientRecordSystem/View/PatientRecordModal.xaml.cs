@@ -24,9 +24,14 @@ namespace PatientRecordSystem.View
     /// </summary>
     public partial class PatientRecordModal : Window
     {
+
+        private bool populated = false;
+        private bool Editing;
+        private Patient currentPatient;
+        private Patient editedPatient;
+
         public PatientRecordModal(Patient CurrentPatient)
         {
-
             InitializeComponent();
 
             Editing = true;
@@ -36,11 +41,12 @@ namespace PatientRecordSystem.View
             PopulateFields(CurrentPatient);
         }
 
-        private bool populated = false;
-        private bool Editing;
-        private Patient currentPatient;
-        private Patient editedPatient;
 
+
+        /// <summary>
+        /// Populates all fields with data from Patient patient.
+        /// </summary>
+        /// <param name="patient"></param>
         private void PopulateFields (Patient patient)
         {
             Title.Text = $"Patient Record - {patient.HospitalNumber}";
@@ -60,6 +66,9 @@ namespace PatientRecordSystem.View
             Trace.WriteLine(currentPatient.LastName);
         }
 
+        /// <summary>
+        /// Updates currentPatient with data from the form.
+        /// </summary>
         private void UpdatePatient ()
         {
             currentPatient.FirstName = FirstName.Text;
@@ -73,8 +82,12 @@ namespace PatientRecordSystem.View
             currentPatient.NHSNumber = NHSNumber.Text;
         }
 
+        /// <summary>
+        /// Applies all edits and opens a notification informing the user of this action
+        /// </summary>
         private void Edit_Click (object sender, RoutedEventArgs e)
         {
+            // If not editing, start editing.
             if (!Editing)
             {
                 ToggleEditMode();
@@ -100,6 +113,9 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// If editing, toggle edit mode, otherwise, open a PatientArchiveModal dialog for the selected patient.
+        /// </summary>
         private void Records_Click (object sender, RoutedEventArgs e)
         {
             if (Editing)
@@ -118,6 +134,9 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Validates all data entered into the form
+        /// </summary>
         private void Validate (object sender, RoutedEventArgs e)
         {
             if (populated)
@@ -135,6 +154,9 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Toggles edit mode, and updates button labels depending on whether Edit is true or false.
+        /// </summary>
         private void ToggleEditMode ()
         {
             Editing = !Editing;

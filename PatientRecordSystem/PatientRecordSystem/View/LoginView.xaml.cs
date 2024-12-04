@@ -50,27 +50,17 @@ namespace PatientRecordSystem.View
             }
         }
 
-        private void Skip_Click (object sender, RoutedEventArgs e)
-        {
-            Globals.ValidationStatus status = UserManager.GetInstance().ValidateUser("admin@example.com", UserManager.Hash("Example123"));
-            ValidationInformation(status);
-
-            switch (status)
-            {
-                case Globals.ValidationStatus.Validated:
-                    NavigationService.Navigate(new DashboardView());
-                    break;
-                case Globals.ValidationStatus.ValidatedReset:
-                    NavigationService.Navigate(new PasswordResetView());
-                    break;
-            }
-        }
-
+        /// <summary>
+        /// Navigates the user to the forgot password form
+        /// </summary>
         private void ForgotPassword_Click (object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ForgotPasswordView());
         }
 
+        /// <summary>
+        /// Displays the caps lock indicator when the a button is pressed in the password field.
+        /// </summary>
         private void PasswordBoxKeyDown (object sender, KeyEventArgs e)
         {
 
@@ -79,6 +69,7 @@ namespace PatientRecordSystem.View
             tt.PlacementTarget = sender as UIElement;
             tt.Placement = PlacementMode.Bottom;
 
+            // If caps lock is enabled, show the tooltip.
             if ((Keyboard.GetKeyStates (Key.CapsLock) & KeyStates.Toggled) == KeyStates.Toggled)
             {
                 if (password.ToolTip == null)

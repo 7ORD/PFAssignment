@@ -26,7 +26,15 @@ namespace PatientRecordSystem.View
         public PatientsView()
         {
             InitializeComponent();
-            PatientTable.DataContext = PatientManager.GetInstance().Patients();
+            PatientTable.DataContext = PatientManager.GetInstance().Patients(); 
+
+            if (UserManager.GetInstance ().currentUser.AccountType != User.UserAccountType.Doctor)
+            {
+                RegisterButton.IsEnabled = true;
+            } else
+            {
+                RegisterButton.IsEnabled = false;
+            }
         }
         
         private void SearchBar_KeyUp (object sender, KeyEventArgs e)

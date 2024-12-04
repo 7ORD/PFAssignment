@@ -24,7 +24,6 @@ namespace PatientRecordSystem.View
 
         private enum CurrentTab
         {
-            Dashboard,
             Patients,
             Appointments,
             UserManagement,
@@ -58,26 +57,17 @@ namespace PatientRecordSystem.View
 
             switch (tab)
             {
-                case CurrentTab.Dashboard:
-                    DashboardButton.Background = selectedColor;
-                    PatientsButton.Background = defaultColor;
-                    AppointmentsButton.Background = defaultColor;
-                    UserManagementButton.Background = defaultColor;
-                    break;
                 case CurrentTab.Patients:
-                    DashboardButton.Background = defaultColor;
                     PatientsButton.Background = selectedColor;
                     AppointmentsButton.Background = defaultColor;
                     UserManagementButton.Background = defaultColor;
                     break;
                 case CurrentTab.Appointments:
-                    DashboardButton.Background = defaultColor;
                     PatientsButton.Background = defaultColor;
                     AppointmentsButton.Background = selectedColor;
                     UserManagementButton.Background = defaultColor;
                     break;
                 case CurrentTab.UserManagement:
-                    DashboardButton.Background = defaultColor;
                     PatientsButton.Background = defaultColor;
                     AppointmentsButton.Background = defaultColor;
                     UserManagementButton.Background = selectedColor;
@@ -92,12 +82,6 @@ namespace PatientRecordSystem.View
             NavigationService.Navigate(new LoginView());
         }
 
-        public void Dashboard_Click (object sender, RoutedEventArgs e)
-        {
-            SwitchTab(CurrentTab.Dashboard);
-
-            ContentFrame.Navigate(new HomeView());
-        }
         public void Patients_Click(object sender, RoutedEventArgs e)
         {
             SwitchTab(CurrentTab.Patients);

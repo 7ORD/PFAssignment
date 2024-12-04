@@ -31,13 +31,12 @@
         </Border>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Background="White">
-            <Button Click="Dashboard_Click" Name="DashboardButton" Style="{StaticResource NavBar}" Content="Dashboard" />
             <Button Click="Patients_Click" Name="PatientsButton" Style="{StaticResource NavBar}" Content="Patients" />
             <Button Click="Appointments_Click" Name="AppointmentsButton" Style="{StaticResource NavBar}" Content="Appointments" />
             <Button Click="UserManagement_Click" Name="UserManagementButton" Style="{StaticResource NavBar}" Content="User Management" />
         </StackPanel>
 
 
-        <Frame Name="ContentFrame" Grid.Column="1" Grid.Row="1" Source="HomeView.xaml" />
+        <Frame Name="ContentFrame" Grid.Column="1" Grid.Row="1" Source="PatientsView.xaml" />
     </Grid>
 </Page>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\jhoe1\Desktop\Patient Record System\PFAssignment\PatientRecordSystem\PatientRecordSystem\App.xaml
-12-2074878765
+201005758680
 
-21-530738365
+34-1482062485
 198-294894759
-View\AppointmentsView.xaml;View\DashboardView.xaml;View\EditUserModal.xaml;View\ForgotPasswordView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainWindow.xaml;View\NewUserModal.xaml;View\NotificationWindow.xaml;View\PasswordResetView.xaml;View\PatientsView.xaml;View\UserManagementView.xaml;
+View\AppointmentCreationModal.xaml;View\AppointmentsView.xaml;View\DashboardView.xaml;View\DoctorAppointmentView.xaml;View\DoctorSelectionModal.xaml;View\EditUserModal.xaml;View\ForgotPasswordView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainWindow.xaml;View\NewUserModal.xaml;View\NotificationWindow.xaml;View\PasswordResetView.xaml;View\PatientArchiveModal.xaml;View\PatientRecordModal.xaml;View\PatientRegistrationModal.xaml;View\PatientSelectionModal.xaml;View\PatientsView.xaml;View\SlotSelectionModal.xaml;View\UserManagementView.xaml;
 
-True
+False
 

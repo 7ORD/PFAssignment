@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatientRecordSystem.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,40 @@ namespace PatientRecordSystem.View
         public AppointmentsView()
         {
             InitializeComponent();
+
+            if (UserManager.GetInstance ().currentUser.AccountType == Model.User.UserAccountType.Admin)
+            {
+                NewAppointmentButton.IsEnabled = false;
+            }
+
+            UpdatePage();
+        }
+
+        /// <summary>
+        /// Opens an AppointmentCreationModal dialog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewAppointment_Click (object sender, RoutedEventArgs e)
+        {
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(editing: true);
+            appointmentCreationModal.ShowDialog();
+
+            // Refresh the page when the dialog is closed.
+            if (appointmentCreationModal.DialogResult == true)
+            {
+                NavigationService.Navigate(new AppointmentsView());
+            }
+        }
+
+
+        /// <summary>
+        /// Updates the page 
+        /// </summary>
+        private void UpdatePage ()
+        {
+            ContentFrame.Navigate (new DoctorAppointmentView());
+            Title.Text = "Appointment Manager";
         }
     }
 }

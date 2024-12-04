@@ -27,6 +27,10 @@ namespace PatientRecordSystem.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Checks if the passwords entered match eachother, and checks the password contains at least one digit, one upper case
+        /// character and is at least 8 characters long.
+        /// </summary>
         public void Reset_Click (object sender, RoutedEventArgs e)
         {
             if (password.Password == confirmPassword.Password)
@@ -54,38 +58,13 @@ namespace PatientRecordSystem.View
             }
         }
 
+        /// <summary>
+        /// Logs out the current user, and navigates back to the login screen.
+        /// </summary>
         public void Logout_Click (object sender, RoutedEventArgs e)
         {
             UserManager.GetInstance().Logout();
             NavigationService.Navigate(new LoginView());
         }
-
-        private void PasswordBoxKeyDown(object sender, KeyEventArgs e)
-        {
-
-            ToolTip tt = new ToolTip();
-            tt.Content = "Caps lock is enabled";
-            tt.PlacementTarget = sender as UIElement;
-            tt.Placement = PlacementMode.Bottom;
-
-            if ((Keyboard.GetKeyStates(Key.CapsLock) & KeyStates.Toggled) == KeyStates.Toggled)
-            {
-                if (password.ToolTip == null)
-                {
-                    password.ToolTip = tt;
-                    tt.IsOpen = true;
-                }
-            }
-            else
-            {
-                ToolTip currentToolTip = password.ToolTip as ToolTip;
-                if (currentToolTip != null)
-                {
-                    currentToolTip.IsOpen = false;
-                }
-                password.ToolTip = null;
-            }
-        }
-
     }
 }

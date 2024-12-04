@@ -10,6 +10,9 @@ using System.Text.RegularExpressions;
 
 namespace PatientRecordSystem.Util
 {
+    /// <summary>
+    /// UserManager utility class - Handles all user operations
+    /// </summary>
     public sealed class UserManager
     {
 
@@ -43,9 +46,22 @@ namespace PatientRecordSystem.Util
         /// <returns>Returns a new List of type User populated from the users.json file</returns>
         public List<User> Users ()
         {
-            string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
-            string jsonText = File.ReadAllText(jsonPath);
-            return JsonSerializer.Deserialize<List<User>>(jsonText);
+            string jsonPath = Environment.CurrentDirectory + @"\Data\users.json";
+
+            if (File.Exists(jsonPath))
+            {
+                string jsonString = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<User>>(jsonString);
+            }
+            else
+            {
+                File.Create(jsonPath).Dispose();
+                File.WriteAllText(jsonPath, "[]");
+                string jsonString = File.ReadAllText(jsonPath);
+                return JsonSerializer.Deserialize<List<User>>(jsonString);
+            }
+
+
         }
 
         /// <summary>
@@ -54,7 +70,7 @@ namespace PatientRecordSystem.Util
         /// <param name="users">The list of type User to write to the json file.</param>
         public void UpdateData(List<User> users)
         {
-            string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
+            string jsonPath = Environment.CurrentDirectory + @"\Data\users.json";
             string jsonString = JsonSerializer.Serialize(users);
             File.WriteAllText(jsonPath, jsonString);
         }
@@ -66,7 +82,7 @@ namespace PatientRecordSystem.Util
         /// <param name="username">The username of the User to reset the password of</param>
         public void ResetPassword (string username)
         {
-            string jsonPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\Data\users.json";
+            string jsonPath = Environment.CurrentDirectory + @"\Data\users.json";
             List<User> users = Users();
 
             users.Find(u => u.Username == username).ResetFlag = true;
@@ -115,6 +131,7 @@ namespace PatientRecordSystem.Util
 
             UpdateData(users);
         }
+
         /// <summary>
         /// Validates a user's username and password against the values stored in the database
         /// </summary>

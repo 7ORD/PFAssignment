@@ -7,14 +7,12 @@
         xmlns:view="clr-namespace:PatientRecordSystem.View"
         mc:Ignorable="d"
         Title="Patient Record System"
-        MinWidth="1280"
-        MinHeight="720"
         Background="LightGray"
-        Width="1280"
-        Height="720"
+
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         >
+
     <Grid>
         <Frame Source="LoginView.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>

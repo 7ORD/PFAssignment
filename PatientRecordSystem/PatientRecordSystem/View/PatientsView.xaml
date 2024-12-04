@@ -9,6 +9,44 @@
       Title="PatientsView">
 
     <Grid Margin="32">
-        <TextBlock Text="Patients" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="152*"/>
+            <RowDefinition Height="215*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" FontSize="22" Text="Patient Management" />
+        <TextBlock Grid.Column="1" Text="Patient Search" VerticalAlignment="Center" Margin="4 0 16 6" HorizontalAlignment="Right"/>
+        <TextBox Name="SearchBar" Grid.Column="2" Margin="4,0,0,6"  VerticalContentAlignment="Center" Padding="8 0" KeyUp="SearchBar_KeyUp" ToolTip="Enter any information relating to a patient to update the table"/>
+        <Button Name ="RegisterButton" Grid.Row="0" Grid.Column="3" Content="Register new Patient" Margin="4,0,0,6" Click="Registration_Click"/>
+
+        <DataGrid Name="PatientTable" Grid.ColumnSpan="4" Grid.Row="1" RowHeight="32" ColumnHeaderHeight="32" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="0,19,0,0" Grid.RowSpan="3">
+            <DataGrid.Columns >
+                <DataGridTextColumn Width="3*"  Header="First Name" Binding="{ Binding FirstName }"/>
+                <DataGridTextColumn Width="3*" Header="Last Name" Binding="{ Binding LastName }"/>
+                <DataGridTextColumn Width="8*" Header="Address" Binding="{ Binding ParsedAddress }"/>
+                <DataGridTextColumn Width="2*" Header="Contact No." Binding="{ Binding ContactNumber }"/>
+                <DataGridTextColumn Width="2*" Header="NHS Number" Binding="{ Binding NHSNumber }" />
+                <DataGridTextColumn Width="3*" Header="Hospital ID" Binding="{ Binding HospitalNumber }" />
+                <DataGridTemplateColumn Header="Action" Width="4*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0"  Content="Patient Record" BorderThickness="0 0 1 0" Click="PatientRecord_Click"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

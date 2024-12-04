@@ -7,10 +7,19 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AppointmentCreationModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\AppointmentsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\DashboardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DoctorAppointmentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DoctorSelectionModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\EditUserModal.xaml.cs">
@@ -34,7 +43,22 @@
     <Compile Update="View\PasswordResetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\PatientArchiveModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PatientRecordModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PatientRegistrationModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PatientSelectionModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\PatientsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SlotSelectionModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserManagementView.xaml.cs">
@@ -42,10 +66,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\AppointmentCreationModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\AppointmentsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\DashboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DoctorAppointmentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DoctorSelectionModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\EditUserModal.xaml">
@@ -72,7 +105,19 @@
     <Page Update="View\PasswordResetView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\PatientArchiveModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PatientRecordModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PatientSelectionModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\PatientsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SlotSelectionModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserManagementView.xaml">

@@ -116,7 +116,7 @@ namespace PatientRecordSystem.View
             }
 
             // Update the User in the users list to equal the edited user.
-            users[users.FindIndex(u => u.Username == editingUser.Username)] = updatedUser;
+            users[users.FindIndex(u => u.Username.ToLower () == editingUser.Username.ToLower ())] = updatedUser;
 
             // Apply the edits to the json file and close this window.
             DialogResult = true;
@@ -129,26 +129,37 @@ namespace PatientRecordSystem.View
         /// </summary>
         private void Disable_Click (object sender, RoutedEventArgs e)
         {
-            List<User> users = UserManager.GetInstance().Users();
-            User user = users.Find(u => u.Username == editingUser.Username);
 
-            user.Disabled = !user.Disabled;
-
-            // Update users list with the newly disabled user
-            users[users.FindIndex(u => u.Username == user.Username)] = user;
-
-            // Update the users json file
-            UserManager.GetInstance().UpdateData(users);
-
-            // Create a new NotificationWindow and show this as a Dialog.
-            NotificationWindow notificationWindow = new NotificationWindow("Disabled", "The user account has been disabled");
-            notificationWindow.ShowDialog();
-
-            // When the NotificationWindow has been closed, close the EditUserModal window.
-            if (notificationWindow.DialogResult == true)
+            if (editingUser.Username != UserManager.GetInstance ().currentUser.Username)
             {
-                this.DialogResult = true;
-                this.Close();
+                List<User> users = UserManager.GetInstance().Users();
+
+                User user = users.Find(u => u.Username == editingUser.Username);
+
+                user.Disabled = !user.Disabled;
+
+                // Update users list with the newly disabled user
+                users[users.FindIndex(u => u.Username == user.Username)] = user;
+
+                // Update the users json file
+                UserManager.GetInstance().UpdateData(users);
+
+                // Create a new NotificationWindow and show this as a Dialog.
+                NotificationWindow notificationWindow = new NotificationWindow("Disabled", "The user account has been disabled");
+                notificationWindow.ShowDialog();
+
+                // When the NotificationWindow has been closed, close the EditUserModal window.
+                if (notificationWindow.DialogResult == true)
+                {
+                    this.DialogResult = true;
+                    this.Close();
+                }
+            } else
+            {
+                // Create a new notification window to show that it's not possible to disable your own account.
+                NotificationWindow notificationWindow = new NotificationWindow("Error", "You cannot disable your own account.");
+                notificationWindow.ShowDialog();
+
             }
         }
     }

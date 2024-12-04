@@ -39,7 +39,14 @@
                         <Button Grid.Column="1" Click="ForgotPassword_Click" Padding="6" Margin="4 0 0 0">Forgot Password</Button>
                     </Grid>
                 </StackPanel>
+
             </Grid>
+            
         </StackPanel>
+        
+
     </Border>
+
+
+        
 </Page>

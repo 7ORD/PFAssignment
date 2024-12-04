@@ -9,6 +9,9 @@ using System.Windows.Data;
 
 namespace PatientRecordSystem.Util
 {
+    /// <summary>
+    /// Helper class used to convert a boolean to Visibility enum
+    /// </summary>
     public class BoolVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

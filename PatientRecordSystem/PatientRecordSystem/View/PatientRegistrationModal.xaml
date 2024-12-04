@@ -1,0 +1,97 @@
+﻿<Window x:Class="PatientRecordSystem.View.PatientRegistrationModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PatientRecordSystem.View"
+        mc:Ignorable="d"
+        Title="PatientRegistration" Height="710" Width="600"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Patient Registration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="8" Grid.Column="0">
+                <TextBlock Text="First Name"/>
+                <TextBox Name="FirstName" Margin="0 4 0 0" Text="" Padding="4" TextChanged="Validate"/>
+            </StackPanel>
+
+            <StackPanel Margin="8" Grid.Column="1">
+                <TextBlock Text="Last Name"/>
+                <TextBox Name="LastName" Margin="0 4 0 0" Text="" Padding="4" TextChanged="Validate"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="8">
+            <TextBlock Text="Address" />
+            <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="3" Margin="0 20 0 0">
+                <Grid Name="AddressBox">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="8">
+                        <TextBlock Text="First Line" />
+                        <TextBox Name="AddressFirstLine" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="8">
+                        <TextBlock Text="Second Line" />
+                        <TextBox Name="AddressSecondLine" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Margin="8">
+                        <TextBlock Text="City" />
+                        <TextBox Name="AddressCity" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Margin="8">
+                        <TextBlock Text="Postcode" />
+                        <TextBox Name="AddressPostcode" Margin="0 4 0 0" Padding="4" TextChanged="Validate"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Margin="8">
+            <TextBlock Text="Date of Birth" />
+            <DatePicker Name="DOB" Margin="0 4 4 0" Padding="4" SelectedDateChanged="Validate"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Margin="8">
+            <TextBlock Text="Contact Number"/>
+            <TextBox Name="ContactNumber" Padding="4" Margin="0 4 4 0" TextChanged="Validate"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Margin="8">
+            <TextBlock Text="NHS Number"/>
+            <TextBox Name="NHSNumber" Padding="4" Margin="0 4 4 0" TextChanged="Validate"/>
+        </StackPanel>
+
+        <Grid Grid.Row="6" Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button Name="RegisterButton" Grid.Column="0" Margin="0 8 4 8" Content="Register new Patient" Click="Register_Click"/>
+            <Button Name="CancelButton" Grid.Column="1" Margin="0 8 4 8" Content="Cancel" Click="Cancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>

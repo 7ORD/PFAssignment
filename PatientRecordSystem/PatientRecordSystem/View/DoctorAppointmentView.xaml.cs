@@ -32,6 +32,12 @@ namespace PatientRecordSystem.View
         public DoctorAppointmentView(bool visible = false, DateTime date = new DateTime ())
         {
             InitializeComponent();
+
+            if (UserManager.GetInstance ().currentUser.AccountType == User.UserAccountType.Doctor)
+            {
+                Doctors = new List<User>();
+                Doctors.Add(UserManager.GetInstance().currentUser);
+            }
             DoctorTable.DataContext = Doctors;
             currentDoctor = new User();
 
@@ -67,7 +73,7 @@ namespace PatientRecordSystem.View
         
         private void NewAppointment_Click (object sender, RoutedEventArgs e)
         {
-            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(date: DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), time: (SBSchedule.SelectedItem as Appointment).Time, slot: SBSchedule.SelectedIndex, doctor: currentDoctor.Username);
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(date: DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), time: (SBSchedule.SelectedItem as Appointment).Time, slot: SBSchedule.SelectedIndex, doctor: currentDoctor.Username, editing: false);
             Globals.appointmentViewDoctor = currentDoctor;
             appointmentCreationModal.ShowDialog();
 
@@ -80,14 +86,35 @@ namespace PatientRecordSystem.View
 
         private void AppointmentDetails_Click (object sender, RoutedEventArgs e)
         {
-            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(true, DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), (SBSchedule.SelectedItem as Appointment).Time, SBSchedule.SelectedIndex, currentDoctor.Username, (SBSchedule.SelectedItem as Appointment).PatientId, (SBSchedule.SelectedItem as Appointment).BriefDescription, (SBSchedule.SelectedItem as Appointment).Description);
-            Globals.appointmentViewDoctor = currentDoctor;
-            appointmentCreationModal.ShowDialog();
-
-            if (appointmentCreationModal.DialogResult == true)
+            
+            
+            if (UserManager.GetInstance ().currentUser.AccountType == User.UserAccountType.Doctor)
             {
-                NavigationService.Navigate(new DoctorAppointmentView(true, (DateTime)SBDatePicker.SelectedDate));
+               AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(true, DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), (SBSchedule.SelectedItem as Appointment).Time, SBSchedule.SelectedIndex, currentDoctor.Username, (SBSchedule.SelectedItem as Appointment).PatientId, (SBSchedule.SelectedItem as Appointment).BriefDescription, (SBSchedule.SelectedItem as Appointment).Description, true);
+
+                Globals.appointmentViewDoctor = currentDoctor;
+                appointmentCreationModal.ShowDialog();
+
+                if (appointmentCreationModal.DialogResult == true)
+                {
+                    NavigationService.Navigate(new DoctorAppointmentView(true, (DateTime)SBDatePicker.SelectedDate));
+                }
+            } else
+            {
+                AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(true, DateOnly.FromDateTime((DateTime)SBDatePicker.SelectedDate), (SBSchedule.SelectedItem as Appointment).Time, SBSchedule.SelectedIndex, currentDoctor.Username, (SBSchedule.SelectedItem as Appointment).PatientId, (SBSchedule.SelectedItem as Appointment).BriefDescription, (SBSchedule.SelectedItem as Appointment).Description, editing: false);
+
+                Globals.appointmentViewDoctor = currentDoctor;
+                appointmentCreationModal.ShowDialog();
+
+                if (appointmentCreationModal.DialogResult == true)
+                {
+                    NavigationService.Navigate(new DoctorAppointmentView(true, (DateTime)SBDatePicker.SelectedDate));
+                }
             }
+            
+
+
+            
         }
 
         private void Date_Changed (object sender, RoutedEventArgs e)

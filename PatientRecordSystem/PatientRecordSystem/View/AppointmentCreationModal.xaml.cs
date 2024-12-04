@@ -24,12 +24,15 @@ namespace PatientRecordSystem.View
     public partial class AppointmentCreationModal : Window
     {
         private Appointment newAppointment = new Appointment();
-
+        private string patientId;
         private bool ReadOnly = false;
 
-        public AppointmentCreationModal(bool readOnly = false, DateOnly date = new DateOnly (), TimeOnly time = new TimeOnly (), int slot = -1, string doctor = "", string patient = "", string summary = "", string description = "")
+        public AppointmentCreationModal(bool readOnly = false, DateOnly date = new DateOnly(), TimeOnly time = new TimeOnly(), int slot = -1, string doctor = "", string patient = "", string summary = "", string description = "", bool editing = false)
         {
             InitializeComponent();
+
+            ReadOnly = readOnly;
+            patientId = patient;
 
             if (date != new DateOnly () && time != new TimeOnly () && slot > -1)
             {
@@ -71,12 +74,31 @@ namespace PatientRecordSystem.View
                 SelectDoctorButton.IsEnabled = false;
                 SelectPatientButton.IsEnabled = false;
                 ReadOnly = readOnly;
+                DoctorNotes.IsEnabled = false;
+                AppointmentStatus.IsEnabled = false;
 
                 Submit.Visibility = Visibility.Hidden;
                 Grid.SetColumn(Cancel, 0);
                 Grid.SetColumnSpan(Cancel, 2);
                 Title.Text = $"Appointment for {Patient.Text = PatientManager.GetInstance().Patients().Find(p => p.HospitalNumber == patient).ParsedName}";
             }
+
+            if (!editing)
+            {
+                AppointmentStatus.IsEnabled = false;
+            } else
+            {
+                AppointmentStatus.IsEnabled = true;
+                DoctorNotes.IsEnabled = true;
+                ReadOnly = false;
+            }
+
+            if (UserManager.GetInstance().currentUser.AccountType != User.UserAccountType.Doctor)
+            {
+                DoctorNotes.IsEnabled = false;
+            }
+
+            AppointmentStatus.SelectedIndex = 0;
         }
 
         private void SelectDoctor_Click (object sender, RoutedEventArgs e)
@@ -138,10 +160,8 @@ namespace PatientRecordSystem.View
             if (Submit != null)
             {
                     Submit.IsEnabled = false;
-                }
-                    
+                }   
             }
-
         }
 
         private void Cancel_Click (object sender, RoutedEventArgs e)
@@ -185,6 +205,23 @@ namespace PatientRecordSystem.View
             }
             
             newAppointment.AppointmentCreator = UserManager.GetInstance().currentUser.Username;
+        }
+
+        private void PopulateForm ()
+        {
+            Description.IsEnabled = false;
+            Summary.IsEnabled = false;
+            SelectDateButton.IsEnabled = false;
+            SelectDoctorButton.IsEnabled = false;
+            SelectPatientButton.IsEnabled = false;
+
+            DoctorNotes.IsEnabled = false;
+            AppointmentStatus.IsEnabled = false;
+
+            Submit.Visibility = Visibility.Hidden;
+            Grid.SetColumn(Cancel, 0);
+            Grid.SetColumnSpan(Cancel, 2);
+            Title.Text = $"Appointment for {Patient.Text = PatientManager.GetInstance().Patients().Find(p => p.HospitalNumber == patientId).ParsedName}";
         }
     }
 }

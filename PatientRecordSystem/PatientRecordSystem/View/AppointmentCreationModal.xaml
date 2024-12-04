@@ -8,77 +8,95 @@
         Title="AppointmentCreationModal" Height="600" Width="800"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="3*"/>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="6*"/>
 
-        </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Name="Title" Text="Schedule a new appointment" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold"/>
+            <TextBlock Grid.Row="0" Name="Title" Text="Schedule a new appointment" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold"/>
 
-        <StackPanel Grid.Row="1" Margin="8">
-            <TextBlock Text="Patient" />
-            <Grid Margin="0 6 0 0">
+            <StackPanel Grid.Row="1" Margin="8">
+                <TextBlock Text="Patient" />
+                <Grid Margin="0 6 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Name="Patient" Text="No Patient Selected" IsEnabled="False" Grid.Column="0" Padding="6" Margin="0 0 4 0" TextChanged="Validate"/>
+                    <Button Name="SelectPatientButton" Grid.Column="1" Margin="4 0 0 0" Content="Select a Patient" Click="SelectPatient_Click" />
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Margin="8">
+                <TextBlock Text="Doctor" />
+                <Grid Margin="0 6 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Name="Doctor" Text="No Doctor Selected" IsEnabled="False" Grid.Column="0" Padding="6" Margin="0 0 4 0" TextChanged="Validate"/>
+                    <Button Name="SelectDoctorButton" Grid.Column="1" Margin="4 0 0 0" Content="Select a Doctor" Click="SelectDoctor_Click"/>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Margin="8">
+                <TextBlock Text="Appointment Time" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Name="AppointmentTime" Text="No Appointment Time Selected" Grid.Column="0" Padding="6" Margin="0 6 4 0" IsEnabled="False" TextChanged="Validate"/>
+                    <Button Name="SelectDateButton" IsEnabled="False" Grid.Column="1" Margin="4 6 0 0" Content="Select Appointment Time" Click="SelectSlot_Click"/>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Margin="8">
+                <TextBlock Text="Appointment Summary"/>
+                <TextBox Name="Summary" Margin="0 6 0 0" Padding="6" TextChanged="Validate"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Margin="8">
+                <TextBlock Text="Appointment Description" />
+                <TextBox Name="Description" Padding="6" Height="100" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="0 6 0 0" TextChanged="Validate"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="6" Margin="8">
+                <TextBlock Text="Doctor's Notes" />
+                <TextBox Name="DoctorNotes" Padding="6" Height="100" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="0 6 0 0" TextChanged="Validate"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="7" Margin="8">
+                <TextBlock Text="Appointment Status"/>
+                <ComboBox Name="AppointmentStatus" Margin=" 0 4  0 0" SelectionChanged="Validate">
+                    <ComboBoxItem Name="ComboScheduled" Content="Scheduled"></ComboBoxItem>
+                    <ComboBoxItem Name="ComboCompleted" Content="Completed"></ComboBoxItem>
+                    <ComboBoxItem Name="ComboCancelled" Content="Cancelled"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <Grid Grid.Row="8" Margin="16">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <TextBox Name="Patient" Text="No Patient Selected" IsEnabled="False" Grid.Column="0" Padding="6" Margin="0 0 4 0" TextChanged="Validate"/>
-                <Button Name="SelectPatientButton" Grid.Column="1" Margin="4 0 0 0" Content="Select a Patient" Click="SelectPatient_Click" />
+                <Button Height="32" Name="Submit" Click="Submit_Click" Grid.Column="0" Margin="0 0 4 0" Content="Schedule Appointment" IsEnabled="False"/>
+                <Button Height="32"  Name="Cancel" Click="Cancel_Click" Grid.Column="1" Margin="4 0 0 0" Content="Cancel"/>
             </Grid>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Margin="8">
-            <TextBlock Text="Doctor" />
-            <Grid Margin="0 6 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBox Name="Doctor" Text="No Doctor Selected" IsEnabled="False" Grid.Column="0" Padding="6" Margin="0 0 4 0" TextChanged="Validate"/>
-                <Button Name="SelectDoctorButton" Grid.Column="1" Margin="4 0 0 0" Content="Select a Doctor" Click="SelectDoctor_Click"/>
-            </Grid>
-        </StackPanel>
-
-        <StackPanel Grid.Row="3" Margin="8">
-            <TextBlock Text="Appointment Time" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBox Name="AppointmentTime" Text="No Appointment Time Selected" Grid.Column="0" Padding="6" Margin="0 6 4 0" IsEnabled="False" TextChanged="Validate"/>
-                <Button Name="SelectDateButton" IsEnabled="False" Grid.Column="1" Margin="4 6 0 0" Content="Select Appointment Time" Click="SelectSlot_Click"/>
-            </Grid>
-        </StackPanel>
-
-        <StackPanel Grid.Row="4" Margin="8">
-            <TextBlock Text="Appointment Summary"/>
-            <TextBox Name="Summary" Margin="0 6 0 0" Padding="6" TextChanged="Validate"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="5" Margin="8">
-            <TextBlock Text="Appointment Description" />
-            <TextBox Name="Description" Padding="6" Height="100" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="0 6 0 0" TextChanged="Validate"/>
-        </StackPanel>
-
-        <Grid Grid.Row="6" Margin="16 0 16 16">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <Button Name="Submit" Click="Submit_Click" Grid.Column="0" Margin="0 0 4 0" Content="Schedule Appointment" IsEnabled="False"/>
-            <Button Name="Cancel" Click="Cancel_Click" Grid.Column="1" Margin="4 0 0 0" Content="Cancel"/>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Window>

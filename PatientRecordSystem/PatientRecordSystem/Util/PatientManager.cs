@@ -47,7 +47,6 @@ namespace PatientRecordSystem.Util
                 string jsonString = File.ReadAllText(jsonPath);
                 return JsonSerializer.Deserialize<List<Patient>>(jsonString);
             }
-
         }
 
         public void UpdateData (List<Patient> patients)

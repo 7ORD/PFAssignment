@@ -10,11 +10,6 @@
         Title="Edit User"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-
-
-
-    
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>

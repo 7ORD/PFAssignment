@@ -30,7 +30,7 @@ namespace PatientRecordSystem.View
 
         private void NewAppointment_Click (object sender, RoutedEventArgs e)
         {
-            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal();
+            AppointmentCreationModal appointmentCreationModal = new AppointmentCreationModal(editing: false);
             appointmentCreationModal.ShowDialog();
 
             if (appointmentCreationModal.DialogResult == true)
